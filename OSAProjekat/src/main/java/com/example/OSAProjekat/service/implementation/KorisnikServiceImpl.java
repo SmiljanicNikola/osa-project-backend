@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.example.OSAProjekat.model.dto.KorisnikDTO;
 import com.example.OSAProjekat.model.entity.Korisnik;
+import com.example.OSAProjekat.model.entity.Prodavac;
 import com.example.OSAProjekat.model.entity.Roles;
 import com.example.OSAProjekat.repository.KorisnikRepository;
 import com.example.OSAProjekat.service.KorisnikService;
+import com.example.OSAProjekat.service.ProdavacService;
 
 @Service
 public class KorisnikServiceImpl implements KorisnikService {
@@ -19,6 +21,9 @@ public class KorisnikServiceImpl implements KorisnikService {
 	@Autowired
 	private KorisnikRepository korisnikRepository;
 
+	@Autowired
+	private ProdavacService prodavacService;
+	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
@@ -51,5 +56,29 @@ public class KorisnikServiceImpl implements KorisnikService {
 
 	        return newKorisnik;
 	}
+	
+	
+	@Override
+	public Korisnik createProdavac(KorisnikDTO korisnikDTO) {
+		 Optional<Korisnik> korisnik = korisnikRepository.findFirstByUsername(korisnikDTO.getUsername());
+
+	        if(korisnik.isPresent()){
+	            return null;
+	        }
+
+	        Korisnik newKorisnik = new Korisnik();
+	        newKorisnik.setIme(korisnikDTO.getIme());
+	        newKorisnik.setPrezime(korisnikDTO.getPrezime());
+	        newKorisnik.setUsername(korisnikDTO.getUsername());
+	        newKorisnik.setPassword(passwordEncoder.encode(korisnikDTO.getPassword()));
+	        newKorisnik.setBlokiran(false);
+	        newKorisnik.setRole(Roles.PRODAVAC);
+	        newKorisnik = korisnikRepository.save(newKorisnik);
+	        
+
+	        return newKorisnik;
+	}
+	
+	
 
 }

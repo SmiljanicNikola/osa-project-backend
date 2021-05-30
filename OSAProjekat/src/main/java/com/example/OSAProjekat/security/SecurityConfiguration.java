@@ -74,9 +74,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 //.antMatchers("/h2-console/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/artikli").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/artikli").hasRole("KUPAC")
                 .antMatchers(HttpMethod.POST, "/api/korisnici/login").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/korisnici").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/korisnici/prodavac").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/prodavci").permitAll()
 
                 .anyRequest().authenticated();
 

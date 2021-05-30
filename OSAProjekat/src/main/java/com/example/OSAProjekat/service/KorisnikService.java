@@ -8,5 +8,7 @@ public interface KorisnikService {
 	Korisnik findByUsername(String username);
 
     Korisnik createUser(KorisnikDTO korisnikDTO);
+    
+    Korisnik createProdavac(KorisnikDTO korisnikDTO);
 	
 }
