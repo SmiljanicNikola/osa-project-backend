@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.example.OSAProjekat.model.dto.AdministratorDTO;
 import com.example.OSAProjekat.model.dto.KorisnikDTO;
+import com.example.OSAProjekat.model.dto.ProdavacDTO;
 import com.example.OSAProjekat.model.entity.Administrator;
+import com.example.OSAProjekat.model.entity.Korisnik;
+import com.example.OSAProjekat.model.entity.Roles;
 import com.example.OSAProjekat.repository.AdministratorRepository;
-import com.example.OSAProjekat.repository.ProdavacRepository;
+import com.example.OSAProjekat.repository.KorisnikRepository;
 import com.example.OSAProjekat.service.AdministratorService;
 
 @Service
@@ -18,6 +21,9 @@ public class AdministratorServiceImpl implements AdministratorService {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private KorisnikRepository korisnikRepo;
 	
 	@Autowired
 	private AdministratorRepository adminRepo;
@@ -44,16 +50,33 @@ public class AdministratorServiceImpl implements AdministratorService {
 		
 	}
 
-	@Override
-	public Administrator createAdministrator(AdministratorDTO administratorDTO) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Administrator createAdministrator(AdministratorDTO administratorDTO, KorisnikDTO korisnikDTO) {
+		
+		//Sam korisnik
+	 	Korisnik newKorisnik = new Korisnik();
+	 	//newKorisnik.setId(korisnikDTO.getId());
+        newKorisnik.setIme(korisnikDTO.getIme());
+        newKorisnik.setPrezime(korisnikDTO.getPrezime());
+        newKorisnik.setUsername(korisnikDTO.getUsername());
+        newKorisnik.setPassword(passwordEncoder.encode(korisnikDTO.getPassword()));
+        newKorisnik.setBlokiran(false);
+        newKorisnik.setRole(Roles.ADMINISTRATOR);
+        newKorisnik = korisnikRepo.save(newKorisnik);
+	
+        //Sam prodavac
+	 	Administrator newAdministrator = new Administrator();
+	 	//newProdavac.setId(newKorisnik.getId());
+	 	newAdministrator.setKorisnik(newKorisnik);
+	 	
+	 	newAdministrator = adminRepo.save(newAdministrator);
 
-	@Override
+        return newAdministrator;
+}
+
+	/*@Override
 	public Administrator createeAdministrator(AdministratorDTO administratorDTO, KorisnikDTO korisnikDTO) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 }

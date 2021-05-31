@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.example.OSAProjekat.model.dto.AdministratorDTO;
 import com.example.OSAProjekat.model.dto.KorisnikDTO;
 import com.example.OSAProjekat.model.entity.Korisnik;
 import com.example.OSAProjekat.model.entity.Prodavac;
@@ -79,6 +80,28 @@ public class KorisnikServiceImpl implements KorisnikService {
 
 	        return newKorisnik;
 	}
+	
+	@Override
+	public Korisnik createAdministrator(KorisnikDTO korisnikDTO) {
+		 Optional<Korisnik> korisnik = korisnikRepository.findFirstByUsername(korisnikDTO.getUsername());
+
+	        if(korisnik.isPresent()){
+	            return null;
+	        }
+
+	        Korisnik newKorisnik = new Korisnik();
+	        newKorisnik.setIme(korisnikDTO.getIme());
+	        newKorisnik.setPrezime(korisnikDTO.getPrezime());
+	        newKorisnik.setUsername(korisnikDTO.getUsername());
+	        newKorisnik.setPassword(passwordEncoder.encode(korisnikDTO.getPassword()));
+	        newKorisnik.setBlokiran(false);
+	        newKorisnik.setRole(Roles.ADMINISTRATOR);
+	        newKorisnik = korisnikRepository.save(newKorisnik);
+
+	        return newKorisnik;
+	}
+	
+	
 
 	@Override
 	public List<Korisnik> listAll() {

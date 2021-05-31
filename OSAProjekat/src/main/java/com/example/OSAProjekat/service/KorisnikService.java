@@ -15,5 +15,8 @@ public interface KorisnikService {
     Korisnik createUser(KorisnikDTO korisnikDTO);
     
     Korisnik createProdavac(KorisnikDTO korisnikDTO);
+    
+    Korisnik createAdministrator(KorisnikDTO korisnikDTO);
+
 	
 }

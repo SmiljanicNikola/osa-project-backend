@@ -23,11 +23,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.OSAProjekat.model.dto.AdministratorDTO;
 import com.example.OSAProjekat.model.dto.KorisnikDTO;
 import com.example.OSAProjekat.model.dto.ProdavacDTO;
+import com.example.OSAProjekat.model.entity.Administrator;
 import com.example.OSAProjekat.model.entity.Korisnik;
 import com.example.OSAProjekat.model.entity.Prodavac;
 import com.example.OSAProjekat.security.TokenUtils;
+import com.example.OSAProjekat.service.AdministratorService;
 import com.example.OSAProjekat.service.KorisnikService;
 import com.example.OSAProjekat.service.ProdavacService;
 
@@ -37,6 +40,9 @@ public class KorisnikController {
 	
 	@Autowired
     KorisnikService korisnikService;
+	
+	@Autowired
+    AdministratorService adminService;
 	
 	@Autowired
     ProdavacService prodavacService;
@@ -107,6 +113,38 @@ public class KorisnikController {
         
         
     }
+    
+    @PostMapping("/administrator")
+    @Consumes("MediaType.APPLICATION_JSON")
+	@Produces("MediaType.APPLICATION_JSON")
+    public ResponseEntity<AdministratorDTO> createAdministrator(@RequestBody @Validated KorisnikDTO newKorisnik, AdministratorDTO newAdministrator){
+
+        /*Korisnik createdKorisnik = korisnikService.createProdavac(newKorisnik);
+
+        if(createdKorisnik == null){
+            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
+        }
+        KorisnikDTO korisnikDTO = new KorisnikDTO(createdKorisnik);*/
+
+       
+        
+        
+        Administrator createdAdministrator = adminService.createAdministrator(newAdministrator, newKorisnik);
+
+        if(createdAdministrator == null){
+            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
+        }
+        
+        AdministratorDTO administratorDTO = new AdministratorDTO(createdAdministrator);
+        //prodavacDTO.setId(newKorisnik.getId());
+
+        return new ResponseEntity<>(administratorDTO, HttpStatus.CREATED);
+        
+        
+        
+        
+    }
+    
     
     
     

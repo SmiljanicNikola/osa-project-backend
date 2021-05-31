@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.example.OSAProjekat.model.dto.AdministratorDTO;
 import com.example.OSAProjekat.model.dto.KorisnikDTO;
+import com.example.OSAProjekat.model.dto.ProdavacDTO;
 import com.example.OSAProjekat.model.entity.Administrator;
+import com.example.OSAProjekat.model.entity.Prodavac;
 
 
 public interface AdministratorService {
@@ -18,8 +20,7 @@ public interface AdministratorService {
 		
 	public void delete(Integer id);
 	
-	Administrator createAdministrator(AdministratorDTO administratorDTO);
+	//Administrator createAdministrator(AdministratorDTO administratorDTO);
 	
-	Administrator createeAdministrator(AdministratorDTO administratorDTO, KorisnikDTO korisnikDTO);
-	
+	Administrator createAdministrator(AdministratorDTO administratorDTO,  KorisnikDTO korisnikDTO);	
 }
