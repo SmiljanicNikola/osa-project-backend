@@ -1,5 +1,8 @@
 package com.example.OSAProjekat.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 
@@ -14,6 +17,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +49,20 @@ public class KorisnikController {
 
     @Autowired
     TokenUtils tokenUtils;
+    
+    @GetMapping
+	public ResponseEntity<List<KorisnikDTO>> getKorisnike(){
+		List<Korisnik> korisnici = korisnikService.listAll();
+		
+		List<KorisnikDTO> korisniciDTO = new ArrayList<>();
+		for(Korisnik k : korisnici) {
+			korisniciDTO.add(new KorisnikDTO(k));
+		}
+		
+		return new ResponseEntity<>(korisniciDTO, HttpStatus.OK);
+		
+	}
+    
     
     @PostMapping()
     public ResponseEntity<KorisnikDTO> create(@RequestBody @Validated KorisnikDTO newKorisnik){

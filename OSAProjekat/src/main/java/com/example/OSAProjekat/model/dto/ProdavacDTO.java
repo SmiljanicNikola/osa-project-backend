@@ -24,7 +24,7 @@ public class ProdavacDTO {
 	private String naziv;
 
 	
-	private ProdavacDTO() {
+	public ProdavacDTO() {
 		
 	}
 

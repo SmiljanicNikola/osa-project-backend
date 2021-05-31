@@ -1,5 +1,6 @@
 package com.example.OSAProjekat.service.implementation;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +78,12 @@ public class KorisnikServiceImpl implements KorisnikService {
 	        
 
 	        return newKorisnik;
+	}
+
+	@Override
+	public List<Korisnik> listAll() {
+		return korisnikRepository.findAll();
+
 	}
 	
 	

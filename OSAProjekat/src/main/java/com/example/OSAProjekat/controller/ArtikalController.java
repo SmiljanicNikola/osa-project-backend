@@ -32,7 +32,7 @@ public class ArtikalController {
 	private ArtikalService artikalService;
 	
 	
-	@PreAuthorize("hasRole('KUPAC')")
+	//@PreAuthorize("hasRole('KUPAC')")
 	@GetMapping
 	public ResponseEntity<List<ArtikalDTO>> getArtikle(){
 		List<Artikal> artikli = artikalService.listAll();

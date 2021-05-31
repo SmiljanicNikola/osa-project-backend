@@ -9,31 +9,27 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="kupci")
-public class Kupac {
-	
+@Table(name="administratori")
+public class Administrator {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "kupac_id", unique = true, nullable = false)
+	@Column(name = "admin_id", unique = true, nullable = false)
 	private Integer id;
 	
 	@OneToOne
 	@JoinColumn(name = "korisnik_id", referencedColumnName = "korisnik_id")
 	private Korisnik korisnik;
-	
-	@Column(name = "adresa", unique = false, nullable = false)
-	private String adresa;
-	
-	public Kupac() {
+
+	public Administrator() {
 		
 	}
-
-	public Kupac(Integer id, String adresa) {
+	
+	public Administrator(Integer id, Korisnik korisnik) {
 		super();
 		this.id = id;
-		this.adresa = adresa;
+		this.korisnik = korisnik;
 	}
 
 	public Integer getId() {
@@ -44,14 +40,6 @@ public class Kupac {
 		this.id = id;
 	}
 
-	public String getAdresa() {
-		return adresa;
-	}
-
-	public void setAdresa(String adresa) {
-		this.adresa = adresa;
-	}
-
 	public Korisnik getKorisnik() {
 		return korisnik;
 	}
@@ -59,8 +47,6 @@ public class Kupac {
 	public void setKorisnik(Korisnik korisnik) {
 		this.korisnik = korisnik;
 	}
-	
-	
 	
 	
 	
