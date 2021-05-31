@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -36,6 +37,10 @@ public class Korisnik {
 	@Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Roles role;
+	
+	
+	/*@OneToOne(mappedBy="user")
+	private Prodavac prodavac;*/
 	
 	public Korisnik() {
 		

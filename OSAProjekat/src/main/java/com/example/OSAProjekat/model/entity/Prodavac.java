@@ -12,16 +12,26 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
+
 @Entity
 @Table(name="prodavci")
 public class Prodavac {
 
-	@Id
+	/*@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@OneToOne
+	@OneToOne
 	@JoinColumn(name = "prodavac_id", referencedColumnName = "korisnik_id", nullable = false)
 	//@Column(name = "prodavac_id", referencedColumnName = "korisnik_id",unique = true, nullable = false)
+	private Integer id;*/
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "prodavac_id", unique = true, nullable = false)
 	private Integer id;
+	
+	@OneToOne
+	@JoinColumn(name = "korisnik_id", referencedColumnName = "korisnik_id")
+	private Korisnik korisnik;
 	
 	@Column(name = "posluje_od", unique = false, nullable = true)
 	private LocalDate poslujeOd;
@@ -40,14 +50,34 @@ public class Prodavac {
 	}
 	
 	
-	public Prodavac(Integer id, LocalDate poslujeOd, String email, String adresa, String naziv) {
+	
+
+	public Prodavac(Integer id, Korisnik korisnik, LocalDate poslujeOd, String email, String adresa, String naziv) {
 		super();
 		this.id = id;
+		this.korisnik = korisnik;
 		this.poslujeOd = poslujeOd;
 		this.email = email;
 		this.adresa = adresa;
 		this.naziv = naziv;
 	}
+
+
+
+
+	public Korisnik getKorisnik() {
+		return korisnik;
+	}
+
+
+
+
+	public void setKorisnik(Korisnik korisnik) {
+		this.korisnik = korisnik;
+	}
+
+
+
 
 	public Integer getId() {
 		return id;

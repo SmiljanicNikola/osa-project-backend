@@ -81,7 +81,7 @@ public class KorisnikController {
         }
         
         ProdavacDTO prodavacDTO = new ProdavacDTO(createdProdavac);
-        prodavacDTO.setId(newKorisnik.getId());
+        //prodavacDTO.setId(newKorisnik.getId());
 
         return new ResponseEntity<>(prodavacDTO, HttpStatus.CREATED);
         

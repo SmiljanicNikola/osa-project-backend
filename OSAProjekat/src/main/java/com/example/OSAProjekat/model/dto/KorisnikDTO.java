@@ -29,17 +29,12 @@ public class KorisnikDTO {
 	private String password;
 	private boolean blokiran;
 	
-	private KorisnikDTO() {
+	public KorisnikDTO() {
 		
 	}
 	
-	public KorisnikDTO(Korisnik createdKorisnik) {
-		this.id = createdKorisnik.getId();
-		this.ime = createdKorisnik.getIme();
-		this.prezime = createdKorisnik.getPrezime();
-		this.username = createdKorisnik.getUsername();
-		this.password = createdKorisnik.getPassword();
-		
+	public KorisnikDTO(Korisnik korisnik) {
+		this(korisnik.getId(), korisnik.getIme(), korisnik.getPrezime(), korisnik.getUsername(), korisnik.getPassword(), korisnik.isBlokiran());
 	}
 
 	public KorisnikDTO(Integer id, String ime, String prezime, String username, String password, boolean blokiran) {

@@ -12,6 +12,9 @@ public class ProdavacDTO {
 
 	private Integer id;
 	@NotBlank
+	
+	private KorisnikDTO korisnik;
+	
 	private LocalDate poslujeOd;	
 	@NotBlank
 	private String email;
@@ -26,19 +29,22 @@ public class ProdavacDTO {
 	}
 
 	public ProdavacDTO(Prodavac prodavac) {
-		this(prodavac.getId(), prodavac.getPoslujeOd(), prodavac.getEmail(), prodavac.getAdresa(), prodavac.getNaziv());
+		this(prodavac.getId(), new KorisnikDTO(prodavac.getKorisnik()), prodavac.getPoslujeOd(), prodavac.getEmail(), prodavac.getAdresa(), prodavac.getNaziv());
 	}
 	
-	public ProdavacDTO(Integer id, @NotBlank LocalDate poslujeOd, @NotBlank String email, @NotBlank String adresa,
-			@NotBlank String naziv) {
+	
+
+
+	public ProdavacDTO(Integer id, @NotBlank KorisnikDTO korisnik, LocalDate poslujeOd, @NotBlank String email,
+			@NotBlank String adresa, @NotBlank String naziv) {
 		super();
 		this.id = id;
+		this.korisnik = korisnik;
 		this.poslujeOd = poslujeOd;
 		this.email = email;
 		this.adresa = adresa;
 		this.naziv = naziv;
 	}
-
 
 	public Integer getId() {
 		return id;
@@ -87,6 +93,14 @@ public class ProdavacDTO {
 
 	public void setNaziv(String naziv) {
 		this.naziv = naziv;
+	}
+
+	public KorisnikDTO getKorisnik() {
+		return korisnik;
+	}
+
+	public void setKorisnik(KorisnikDTO korisnik) {
+		this.korisnik = korisnik;
 	}
 	
 	

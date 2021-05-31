@@ -68,7 +68,8 @@ public class ProdavacServiceImpl implements ProdavacService {
 		
 	        //Sam prodavac
 		 	Prodavac newProdavac = new Prodavac();
-		 	newProdavac.setId(newKorisnik.getId());
+		 	//newProdavac.setId(newKorisnik.getId());
+		 	newProdavac.setKorisnik(newKorisnik);
 		 	newProdavac.setPoslujeOd(prodavacDTO.getPoslujeOd());
 		 	newProdavac.setEmail(prodavacDTO.getEmail());
 		 	newProdavac.setAdresa(prodavacDTO.getAdresa());
