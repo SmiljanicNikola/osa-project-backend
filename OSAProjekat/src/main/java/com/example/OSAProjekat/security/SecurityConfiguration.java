@@ -77,11 +77,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/artikli").permitAll()
                 
                 .antMatchers(HttpMethod.GET, "/api/artikli/**").hasAnyRole("KUPAC", "PRODAVAC", "ADMINISTRATOR")
-                .antMatchers(HttpMethod.POST, "/api/artikli").hasRole("KUPAC")
+                
+                .antMatchers(HttpMethod.POST, "/api/artikli").hasRole("PRODAVAC")
+                .antMatchers(HttpMethod.DELETE, "/api/artikli/**").hasRole("PRODAVAC")
+                .antMatchers(HttpMethod.PUT, "/api/artikli/**").hasRole("PRODAVAC")
+
+                
                 .antMatchers(HttpMethod.POST, "/api/korisnici/login").permitAll()
+                
                 .antMatchers(HttpMethod.POST, "/api/korisnici").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/korisnici/prodavac").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/korisnici/administrator").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/korisnici/kupac").permitAll()
+                
                 .antMatchers(HttpMethod.GET, "/api/prodavci").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/kupci").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/admini").permitAll()

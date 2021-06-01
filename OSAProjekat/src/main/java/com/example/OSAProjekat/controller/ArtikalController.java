@@ -57,6 +57,7 @@ public class ArtikalController {
         return new ResponseEntity<>(new ArtikalDTO(artikal), HttpStatus.OK);
     }
 	
+	 @PreAuthorize("hasRole('PRODAVAC')")
 	 @PostMapping()
 	 @Consumes("MediaType.APPLICATION_JSON")
 	 @Produces("MediaType.APPLICATION_JSON")
@@ -71,6 +72,7 @@ public class ArtikalController {
 	        return new ResponseEntity<>(new ArtikalDTO(artikal), HttpStatus.CREATED);
 	    }
 
+	@PreAuthorize("hasRole('PRODAVAC')")
 	@PutMapping(value = "/{id}")
 	@Consumes("MediaType.APPLICATION_JSON")
 	@Produces("MediaType.APPLICATION_JSON")
@@ -92,6 +94,7 @@ public class ArtikalController {
 	        return new ResponseEntity<>(new ArtikalDTO(artikal), HttpStatus.OK);
 	    }
 
+	 @PreAuthorize("hasRole('PRODAVAC')")
 	 @DeleteMapping(value = "/{id}")
 	 @Consumes("MediaType.APPLICATION_JSON")
 	 @Produces("MediaType.APPLICATION_JSON")

@@ -68,7 +68,6 @@ public class ProdavacServiceImpl implements ProdavacService {
 		
 	        //Sam prodavac
 		 	Prodavac newProdavac = new Prodavac();
-		 	//newProdavac.setId(newKorisnik.getId());
 		 	newProdavac.setKorisnik(newKorisnik);
 		 	newProdavac.setPoslujeOd(prodavacDTO.getPoslujeOd());
 		 	newProdavac.setEmail(prodavacDTO.getEmail());
@@ -77,7 +76,6 @@ public class ProdavacServiceImpl implements ProdavacService {
 		 	
 	        newProdavac = prodavacRepo.save(newProdavac);
 	        
-
 	        return newProdavac;
 	}
 

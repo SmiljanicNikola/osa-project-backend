@@ -2,7 +2,11 @@ package com.example.OSAProjekat.service;
 
 import java.util.List;
 
+import com.example.OSAProjekat.model.dto.KorisnikDTO;
+import com.example.OSAProjekat.model.dto.KupacDTO;
+import com.example.OSAProjekat.model.dto.ProdavacDTO;
 import com.example.OSAProjekat.model.entity.Kupac;
+import com.example.OSAProjekat.model.entity.Prodavac;
 
 public interface KupacService {
 
@@ -14,4 +18,5 @@ public interface KupacService {
 		
 	public void delete(Integer id);
 	
+	Kupac createKupac(KupacDTO kupacDTO, KorisnikDTO korisnikDTO);
 }

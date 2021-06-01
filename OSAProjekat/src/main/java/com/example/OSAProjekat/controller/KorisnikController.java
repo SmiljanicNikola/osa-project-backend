@@ -25,13 +25,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.OSAProjekat.model.dto.AdministratorDTO;
 import com.example.OSAProjekat.model.dto.KorisnikDTO;
+import com.example.OSAProjekat.model.dto.KupacDTO;
 import com.example.OSAProjekat.model.dto.ProdavacDTO;
 import com.example.OSAProjekat.model.entity.Administrator;
 import com.example.OSAProjekat.model.entity.Korisnik;
+import com.example.OSAProjekat.model.entity.Kupac;
 import com.example.OSAProjekat.model.entity.Prodavac;
 import com.example.OSAProjekat.security.TokenUtils;
 import com.example.OSAProjekat.service.AdministratorService;
 import com.example.OSAProjekat.service.KorisnikService;
+import com.example.OSAProjekat.service.KupacService;
 import com.example.OSAProjekat.service.ProdavacService;
 
 @RestController
@@ -43,6 +46,9 @@ public class KorisnikController {
 	
 	@Autowired
     AdministratorService adminService;
+	
+	@Autowired
+    KupacService kupacService;
 	
 	@Autowired
     ProdavacService prodavacService;
@@ -93,10 +99,7 @@ public class KorisnikController {
         if(createdKorisnik == null){
             return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
         }
-        KorisnikDTO korisnikDTO = new KorisnikDTO(createdKorisnik);*/
-
-       
-        
+        KorisnikDTO korisnikDTO = new KorisnikDTO(createdKorisnik);*/       
         
         Prodavac createdProdavac = prodavacService.createeProdavac(newProdavac, newKorisnik);
 
@@ -108,10 +111,7 @@ public class KorisnikController {
         //prodavacDTO.setId(newKorisnik.getId());
 
         return new ResponseEntity<>(prodavacDTO, HttpStatus.CREATED);
-        
-        
-        
-        
+                      
     }
     
     @PostMapping("/administrator")
@@ -125,10 +125,7 @@ public class KorisnikController {
             return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
         }
         KorisnikDTO korisnikDTO = new KorisnikDTO(createdKorisnik);*/
-
-       
-        
-        
+         
         Administrator createdAdministrator = adminService.createAdministrator(newAdministrator, newKorisnik);
 
         if(createdAdministrator == null){
@@ -138,16 +135,34 @@ public class KorisnikController {
         AdministratorDTO administratorDTO = new AdministratorDTO(createdAdministrator);
         //prodavacDTO.setId(newKorisnik.getId());
 
-        return new ResponseEntity<>(administratorDTO, HttpStatus.CREATED);
-        
-        
-        
-        
+        return new ResponseEntity<>(administratorDTO, HttpStatus.CREATED);       
     }
     
     
+    @PostMapping("/kupac")
+    @Consumes("MediaType.APPLICATION_JSON")
+	@Produces("MediaType.APPLICATION_JSON")
+    public ResponseEntity<KupacDTO> createKupac(@RequestBody @Validated KorisnikDTO newKorisnik, KupacDTO newKupac){
+
+        /*Korisnik createdKorisnik = korisnikService.createProdavac(newKorisnik);
+
+        if(createdKorisnik == null){
+            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
+        }
+        KorisnikDTO korisnikDTO = new KorisnikDTO(createdKorisnik);*/
+         
+        Kupac createdKupac = kupacService.createKupac(newKupac, newKorisnik);
+
+        if(createdKupac == null){
+            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
+        }
+        
+        KupacDTO kupacDTO = new KupacDTO(createdKupac);
+        return new ResponseEntity<>(kupacDTO, HttpStatus.CREATED);       
+    }
     
     
+  
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody KorisnikDTO korisnikDTO) {
         UsernamePasswordAuthenticationToken authenticationToken =

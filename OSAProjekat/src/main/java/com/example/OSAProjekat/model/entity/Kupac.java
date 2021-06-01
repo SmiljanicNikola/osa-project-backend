@@ -23,7 +23,7 @@ public class Kupac {
 	@JoinColumn(name = "korisnik_id", referencedColumnName = "korisnik_id")
 	private Korisnik korisnik;
 	
-	@Column(name = "adresa", unique = false, nullable = false)
+	@Column(name = "adresa", unique = false, nullable = true)
 	private String adresa;
 	
 	public Kupac() {
