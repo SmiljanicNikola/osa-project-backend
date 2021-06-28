@@ -34,10 +34,12 @@ import com.example.OSAProjekat.model.dto.ProdavacDTO;
 import com.example.OSAProjekat.model.entity.Administrator;
 import com.example.OSAProjekat.model.entity.Korisnik;
 import com.example.OSAProjekat.model.entity.Kupac;
+import com.example.OSAProjekat.model.entity.KupacSignUpRequest;
 import com.example.OSAProjekat.model.entity.Prodavac;
 import com.example.OSAProjekat.model.entity.ProdavacSignUpRequest;
 import com.example.OSAProjekat.model.entity.Roles;
 import com.example.OSAProjekat.repository.KorisnikRepository;
+import com.example.OSAProjekat.repository.KupacRepository;
 import com.example.OSAProjekat.repository.ProdavacRepository;
 import com.example.OSAProjekat.security.TokenUtils;
 import com.example.OSAProjekat.service.AdministratorService;
@@ -75,6 +77,9 @@ public class KorisnikController {
     
     @Autowired
     ProdavacRepository prodavacRepository;
+    
+    @Autowired
+    KupacRepository kupacRepository;
 
     
     @Autowired
@@ -107,7 +112,7 @@ public class KorisnikController {
         return new ResponseEntity<>(korisnikDTO, HttpStatus.CREATED);
     }
     
-    @PostMapping("/prodavac")
+    /*@PostMapping("/prodavac")
     @Consumes("MediaType.APPLICATION_JSON")
 	@Produces("MediaType.APPLICATION_JSON")
     public ResponseEntity<ProdavacDTO> createProdavac(@RequestBody @Validated KorisnikDTO newKorisnik, ProdavacDTO newProdavac){
@@ -117,7 +122,7 @@ public class KorisnikController {
         if(createdKorisnik == null){
             return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
         }
-        KorisnikDTO korisnikDTO = new KorisnikDTO(createdKorisnik);*/       
+        KorisnikDTO korisnikDTO = new KorisnikDTO(createdKorisnik);     
         
         Prodavac createdProdavac = prodavacService.createeProdavac(newProdavac, newKorisnik);
 
@@ -130,9 +135,9 @@ public class KorisnikController {
 
         return new ResponseEntity<>(prodavacDTO, HttpStatus.CREATED);
                       
-    }
+    }*/
     
-    @PostMapping("/prodavacc")
+    @PostMapping("/prodavac")
     @Consumes("MediaType.APPLICATION_JSON")
 	@Produces("MediaType.APPLICATION_JSON")
 	public ResponseEntity<?> registerProdavac(@Valid @RequestBody ProdavacSignUpRequest signUpRequest) {
@@ -159,7 +164,7 @@ public class KorisnikController {
 		System.out.println("Krei");
 		
 
-		return ResponseEntity.ok("User registered successfully!");
+		return ResponseEntity.ok("Prodavac registrovan uspesno!");
 	}
     
     
@@ -188,7 +193,7 @@ public class KorisnikController {
     }
     
     
-    @PostMapping("/kupac")
+    /*@PostMapping("/kupac")
     @Consumes("MediaType.APPLICATION_JSON")
 	@Produces("MediaType.APPLICATION_JSON")
     public ResponseEntity<KupacDTO> createKupac(@RequestBody @Validated KorisnikDTO newKorisnik, KupacDTO newKupac){
@@ -198,7 +203,7 @@ public class KorisnikController {
         if(createdKorisnik == null){
             return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
         }
-        KorisnikDTO korisnikDTO = new KorisnikDTO(createdKorisnik);*/
+        KorisnikDTO korisnikDTO = new KorisnikDTO(createdKorisnik);
          
         Kupac createdKupac = kupacService.createKupac(newKupac, newKorisnik);
 
@@ -208,7 +213,37 @@ public class KorisnikController {
         
         KupacDTO kupacDTO = new KupacDTO(createdKupac);
         return new ResponseEntity<>(kupacDTO, HttpStatus.CREATED);       
-    }
+    }*/
+    
+    @PostMapping("/kupac")
+    @Consumes("MediaType.APPLICATION_JSON")
+	@Produces("MediaType.APPLICATION_JSON")
+	public ResponseEntity<?> registerKupac(@Valid @RequestBody KupacSignUpRequest signUpRequest) {
+		/*if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+			return ResponseEntity
+					.badRequest()
+					.body(new MessageResponse("Error: Username is already taken!"));
+		}*/
+		
+
+
+		Korisnik korisnik = new Korisnik(signUpRequest.getIme(), signUpRequest.getPrezime(), signUpRequest.getUsername(), passwordEncoder.encode(signUpRequest.getPassword()));
+
+		korisnik.setBlokiran(false);
+		korisnik.setRole(Roles.KUPAC);
+	
+		korisnikRepository.save(korisnik);
+		
+		Kupac kupac = new Kupac(signUpRequest.getAdresa());
+		kupac.setKorisnik(korisnik);
+		
+		System.out.println("Kreirano" + signUpRequest.getAdresa());
+		kupacRepository.save(kupac);
+		System.out.println("Krei");
+		
+
+		return ResponseEntity.ok("Kupac registrovan uspesno!");
+	}
     
     
   

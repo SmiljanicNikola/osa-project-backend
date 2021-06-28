@@ -29,6 +29,15 @@ public class Kupac {
 	public Kupac() {
 		
 	}
+	
+	
+
+	public Kupac(String adresa) {
+		super();
+		this.adresa = adresa;
+	}
+
+
 
 	public Kupac(Integer id, String adresa) {
 		super();
