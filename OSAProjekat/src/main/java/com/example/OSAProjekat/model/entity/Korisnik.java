@@ -57,6 +57,36 @@ public class Korisnik {
 		this.blokiran = blokiran;
 		this.role = role;
 	}
+	
+	
+	
+
+	public Korisnik(String ime, String prezime, String username, String password) {
+		super();
+		this.ime = ime;
+		this.prezime = prezime;
+		this.username = username;
+		this.password = password;
+	}
+
+	public Korisnik(String ime, String prezime, String username, String password, boolean blokiran) {
+		super();
+		this.ime = ime;
+		this.prezime = prezime;
+		this.username = username;
+		this.password = password;
+		this.blokiran = blokiran;
+	}
+
+	public Korisnik(String ime, String prezime, String username, String password, boolean blokiran, Roles role) {
+		super();
+		this.ime = ime;
+		this.prezime = prezime;
+		this.username = username;
+		this.password = password;
+		this.blokiran = blokiran;
+		this.role = role;
+	}
 
 	public Integer getId() {
 		return id;

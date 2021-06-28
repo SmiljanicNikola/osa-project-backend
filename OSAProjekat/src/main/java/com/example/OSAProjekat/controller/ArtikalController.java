@@ -31,7 +31,7 @@ public class ArtikalController {
 	@Autowired
 	private ArtikalService artikalService;
 	
-	
+	//@PreAuthorize("hasAnyRole('PRODAVAC','ADMINISTRATOR','KUPAC')")
 	//@PreAuthorize("hasRole('KUPAC')")
 	@GetMapping
 	public ResponseEntity<List<ArtikalDTO>> getArtikle(){

@@ -52,6 +52,17 @@ public class Prodavac {
 	
 	
 
+	public Prodavac(LocalDate poslujeOd, String email, String adresa, String naziv) {
+		super();
+		this.poslujeOd = poslujeOd;
+		this.email = email;
+		this.adresa = adresa;
+		this.naziv = naziv;
+	}
+
+
+
+
 	public Prodavac(Integer id, Korisnik korisnik, LocalDate poslujeOd, String email, String adresa, String naziv) {
 		super();
 		this.id = id;

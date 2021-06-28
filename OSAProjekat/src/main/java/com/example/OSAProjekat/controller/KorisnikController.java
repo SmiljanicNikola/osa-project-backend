@@ -1,8 +1,11 @@
 package com.example.OSAProjekat.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 
@@ -16,6 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +35,10 @@ import com.example.OSAProjekat.model.entity.Administrator;
 import com.example.OSAProjekat.model.entity.Korisnik;
 import com.example.OSAProjekat.model.entity.Kupac;
 import com.example.OSAProjekat.model.entity.Prodavac;
+import com.example.OSAProjekat.model.entity.ProdavacSignUpRequest;
+import com.example.OSAProjekat.model.entity.Roles;
+import com.example.OSAProjekat.repository.KorisnikRepository;
+import com.example.OSAProjekat.repository.ProdavacRepository;
 import com.example.OSAProjekat.security.TokenUtils;
 import com.example.OSAProjekat.service.AdministratorService;
 import com.example.OSAProjekat.service.KorisnikService;
@@ -61,6 +69,16 @@ public class KorisnikController {
 
     @Autowired
     TokenUtils tokenUtils;
+    
+    @Autowired
+    KorisnikRepository korisnikRepository;
+    
+    @Autowired
+    ProdavacRepository prodavacRepository;
+
+    
+    @Autowired
+	private PasswordEncoder passwordEncoder;
     
     @GetMapping
 	public ResponseEntity<List<KorisnikDTO>> getKorisnike(){
@@ -113,6 +131,37 @@ public class KorisnikController {
         return new ResponseEntity<>(prodavacDTO, HttpStatus.CREATED);
                       
     }
+    
+    @PostMapping("/prodavacc")
+    @Consumes("MediaType.APPLICATION_JSON")
+	@Produces("MediaType.APPLICATION_JSON")
+	public ResponseEntity<?> registerProdavac(@Valid @RequestBody ProdavacSignUpRequest signUpRequest) {
+		/*if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+			return ResponseEntity
+					.badRequest()
+					.body(new MessageResponse("Error: Username is already taken!"));
+		}*/
+		
+
+
+		Korisnik korisnik = new Korisnik(signUpRequest.getIme(), signUpRequest.getPrezime(), signUpRequest.getUsername(), passwordEncoder.encode(signUpRequest.getPassword()));
+
+		korisnik.setBlokiran(false);
+		korisnik.setRole(Roles.PRODAVAC);
+	
+		korisnikRepository.save(korisnik);
+		
+		Prodavac prodavac = new Prodavac(signUpRequest.getPoslujeOd(), signUpRequest.getEmail(), signUpRequest.getAdresa(), signUpRequest.getNaziv());
+		prodavac.setKorisnik(korisnik);
+		
+		System.out.println("Kreirano" + signUpRequest.getNaziv());
+		prodavacRepository.save(prodavac);
+		System.out.println("Krei");
+		
+
+		return ResponseEntity.ok("User registered successfully!");
+	}
+    
     
     @PostMapping("/administrator")
     @Consumes("MediaType.APPLICATION_JSON")
