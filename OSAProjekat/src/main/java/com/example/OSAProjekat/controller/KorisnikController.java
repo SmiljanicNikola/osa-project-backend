@@ -21,6 +21,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,7 +47,9 @@ import com.example.OSAProjekat.service.AdministratorService;
 import com.example.OSAProjekat.service.KorisnikService;
 import com.example.OSAProjekat.service.KupacService;
 import com.example.OSAProjekat.service.ProdavacService;
+import com.example.OSAProjekat.security.JWTResponse;
 
+@CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping("api/korisnici")
 public class KorisnikController {
@@ -248,7 +251,25 @@ public class KorisnikController {
     
   
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody KorisnikDTO korisnikDTO) {
+    public ResponseEntity<JWTResponse> login(@RequestBody KorisnikDTO korisnikDTO) {
+        UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken(korisnikDTO.getUsername(), korisnikDTO.getPassword());
+        Authentication authentication = authenticationManager.authenticate(authenticationToken);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        try {
+        	
+            UserDetails userDetails = userDetailsService.loadUserByUsername(korisnikDTO.getUsername());
+            String token = tokenUtils.generateToken(userDetails);
+            //return ResponseEntity.ok(tokenUtils.generateToken(userDetails));
+            return ResponseEntity.ok(new JWTResponse(token, 
+   				 userDetails.getUsername()));
+        } catch (UsernameNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @PostMapping("/login2")
+    public ResponseEntity<String> login2(@RequestBody KorisnikDTO korisnikDTO) {
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(korisnikDTO.getUsername(), korisnikDTO.getPassword());
         Authentication authentication = authenticationManager.authenticate(authenticationToken);

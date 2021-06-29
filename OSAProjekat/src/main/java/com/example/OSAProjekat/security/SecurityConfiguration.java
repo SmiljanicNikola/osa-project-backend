@@ -74,12 +74,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 //.antMatchers("/h2-console/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/artikli").permitAll()             
-                .antMatchers(HttpMethod.GET, "/api/artikli/**").hasAnyRole("KUPAC", "PRODAVAC", "ADMINISTRATOR")          
+                //.antMatchers(HttpMethod.GET, "/api/artikli/**").hasAnyRole("KUPAC", "PRODAVAC", "ADMINISTRATOR")          
                 .antMatchers(HttpMethod.POST, "/api/artikli").hasRole("PRODAVAC")
                 .antMatchers(HttpMethod.DELETE, "/api/artikli/**").hasRole("PRODAVAC")
                 .antMatchers(HttpMethod.PUT, "/api/artikli/**").hasRole("PRODAVAC")              
                 .antMatchers(HttpMethod.POST, "/api/korisnici/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/korisnici/login2").permitAll()
+
                 
                 .antMatchers(HttpMethod.POST, "/api/korisnici").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/korisnici/prodavac").permitAll()
@@ -88,10 +89,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/api/korisnici/prodavacc").permitAll()
                 
                 
+                .antMatchers(HttpMethod.GET, "/api/artikli/**").permitAll()          
                 .antMatchers(HttpMethod.GET, "/api/prodavci").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/kupci").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/admini").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/korisnici").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/artikli").permitAll()             
+
                 
 
 
