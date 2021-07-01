@@ -30,7 +30,7 @@ public class ArtikalServiceImpl implements ArtikalService {
 
 	@Override
 	public Artikal get(Integer id) {
-		return artikalRepo.findById(id).get();
+		return artikalRepo.findById(id).orElse(null);
 	}
 
 	@Override

@@ -6,6 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +32,10 @@ public class Artikal {
 	@Column(name = "putanja_slike", unique = false, nullable = false)
 	private String putanjaSlike;
 	
+	@ManyToOne
+	@JoinColumn(name = "prodavac_id", referencedColumnName = "prodavac_id")
+	private Prodavac prodavac;
+	
 	
 	public Artikal() {
 		
@@ -43,6 +50,18 @@ public class Artikal {
 		this.putanjaSlike = putanjaSlike;
 	}
 
+	
+	
+
+	public Artikal(Integer id, String naziv, String opis, double cena, String putanjaSlike, Prodavac prodavac) {
+		super();
+		this.id = id;
+		this.naziv = naziv;
+		this.opis = opis;
+		this.cena = cena;
+		this.putanjaSlike = putanjaSlike;
+		this.prodavac = prodavac;
+	}
 
 	public Integer getId() {
 		return id;
@@ -91,6 +110,14 @@ public class Artikal {
 
 	public void setPutanjaSlike(String putanjaSlike) {
 		this.putanjaSlike = putanjaSlike;
+	}
+
+	public Prodavac getProdavac() {
+		return prodavac;
+	}
+
+	public void setProdavac(Prodavac prodavac) {
+		this.prodavac = prodavac;
 	}
 	
 	

@@ -43,8 +43,8 @@ public class ProdavacServiceImpl implements ProdavacService {
 	}
 
 	@Override
-	public Prodavac get(Integer id) {
-		return prodavacRepo.findById(id).get();
+	public Prodavac findOne(Integer id) {
+		return prodavacRepo.findById(id).orElse(null);
 	}
 
 	@Override

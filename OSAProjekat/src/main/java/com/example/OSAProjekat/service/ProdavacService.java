@@ -14,7 +14,7 @@ public interface ProdavacService {
 	
 	public Prodavac save(Prodavac prodavac);
 		
-	public Prodavac get(Integer id);
+    Prodavac findOne(Integer id);
 		
 	public void delete(Integer id);
 	

@@ -14,22 +14,25 @@ public class ArtikalDTO implements Serializable {
 	private String opis;
 	private double cena;	
 	private String putanjaSlike;
+	private ProdavacDTO prodavac;
 	
 	public ArtikalDTO() {
 		
 	}
 	
 	public ArtikalDTO(Artikal artikal) {
-		this(artikal.getId(), artikal.getNaziv(), artikal.getOpis(), artikal.getCena(), artikal.getPutanjaSlike());
+		this(artikal.getId(), artikal.getNaziv(), artikal.getOpis(), artikal.getCena(), artikal.getPutanjaSlike(),  new ProdavacDTO(artikal.getProdavac()));
 	}
 
-	public ArtikalDTO(Integer id, String naziv, String opis, double cena, String putanjaSlike) {
+	
+	public ArtikalDTO(Integer id, String naziv, String opis, double cena, String putanjaSlike, ProdavacDTO prodavac) {
 		super();
 		this.id = id;
 		this.naziv = naziv;
 		this.opis = opis;
 		this.cena = cena;
 		this.putanjaSlike = putanjaSlike;
+		this.prodavac = prodavac;
 	}
 
 	public Integer getId() {
@@ -70,6 +73,14 @@ public class ArtikalDTO implements Serializable {
 
 	public void setPutanjaSlike(String putanjaSlike) {
 		this.putanjaSlike = putanjaSlike;
+	}
+
+	public ProdavacDTO getProdavac() {
+		return prodavac;
+	}
+
+	public void setProdavac(ProdavacDTO prodavac) {
+		this.prodavac = prodavac;
 	}
 	
 	

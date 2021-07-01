@@ -22,8 +22,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.OSAProjekat.model.dto.ArtikalDTO;
+import com.example.OSAProjekat.model.dto.ArtikalDTOPost;
+import com.example.OSAProjekat.model.entity.AddArtikalRequest;
 import com.example.OSAProjekat.model.entity.Artikal;
 import com.example.OSAProjekat.service.ArtikalService;
+import com.example.OSAProjekat.service.ProdavacService;
 
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
@@ -32,6 +35,9 @@ public class ArtikalController {
 	
 	@Autowired
 	private ArtikalService artikalService;
+	
+	@Autowired
+	private ProdavacService prodavacService;
 	
 	//@PreAuthorize("hasAnyRole('PRODAVAC','ADMINISTRATOR','KUPAC')")
 	//@PreAuthorize("hasRole('KUPAC')")
@@ -59,9 +65,8 @@ public class ArtikalController {
         return new ResponseEntity<>(new ArtikalDTO(artikal), HttpStatus.OK);
     }
 	
-	 @PreAuthorize("hasRole('PRODAVAC')")
-	 @PostMapping()
-	 @Consumes("MediaType.APPLICATION_JSON")
+	 //@PreAuthorize("hasRole('PRODAVAC')")
+	 /*@PostMapping()
 	 @Produces("MediaType.APPLICATION_JSON")
 	    public ResponseEntity<ArtikalDTO> saveArtikal(@RequestBody ArtikalDTO artikalDTO) {
 	        Artikal artikal = new Artikal();
@@ -69,12 +74,29 @@ public class ArtikalController {
 	        artikal.setOpis(artikalDTO.getOpis());
 	        artikal.setCena(artikalDTO.getCena());
 	        artikal.setPutanjaSlike(artikalDTO.getPutanjaSlike());
+	        artikal.setProdavac(this.prodavacService.findOne(artikalDTO.getId()));
+	        //artikal.setProdavac(prodavacService.get(artikalDTO.getId()));
+
+	        artikal = artikalService.save(artikal);
+	        return new ResponseEntity<>(new ArtikalDTO(artikal), HttpStatus.CREATED);
+	    }*/
+	
+	 //@PreAuthorize("hasRole('PRODAVAC')")
+	 @PostMapping()
+	 @Produces("MediaType.APPLICATION_JSON")
+	    public ResponseEntity<ArtikalDTO> saveArtikal(@RequestBody AddArtikalRequest addArtikalRequest) {
+	        Artikal artikal = new Artikal();
+	        artikal.setNaziv(addArtikalRequest.getNaziv());
+	        artikal.setOpis(addArtikalRequest.getOpis());
+	        artikal.setCena(addArtikalRequest.getCena());
+	        artikal.setPutanjaSlike(addArtikalRequest.getPutanjaSlike());
+	        artikal.setProdavac(this.prodavacService.findOne(addArtikalRequest.getProdavacId()));
 
 	        artikal = artikalService.save(artikal);
 	        return new ResponseEntity<>(new ArtikalDTO(artikal), HttpStatus.CREATED);
 	    }
 
-	@PreAuthorize("hasRole('PRODAVAC')")
+	//@PreAuthorize("hasRole('PRODAVAC')")
 	@PutMapping(value = "/{id}")
 	@Consumes("MediaType.APPLICATION_JSON")
 	@Produces("MediaType.APPLICATION_JSON")
@@ -96,7 +118,7 @@ public class ArtikalController {
 	        return new ResponseEntity<>(new ArtikalDTO(artikal), HttpStatus.OK);
 	    }
 
-	 @PreAuthorize("hasRole('PRODAVAC')")
+	 //@PreAuthorize("hasRole('PRODAVAC')")
 	 @DeleteMapping(value = "/{id}")
 	 @Consumes("MediaType.APPLICATION_JSON")
 	 @Produces("MediaType.APPLICATION_JSON")
