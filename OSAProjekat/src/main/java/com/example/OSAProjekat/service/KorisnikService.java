@@ -18,5 +18,7 @@ public interface KorisnikService {
     
     Korisnik createAdministrator(KorisnikDTO korisnikDTO);
 
-	
+    Korisnik get(Integer id);
+    
+    void save(Korisnik korisnik);
 }

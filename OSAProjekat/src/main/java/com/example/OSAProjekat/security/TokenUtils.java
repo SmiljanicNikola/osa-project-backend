@@ -69,7 +69,7 @@ public class TokenUtils {
 	 
 	 public String generateToken(UserDetails userDetails) {
 	        Map<String, Object> claims = new HashMap<String, Object>();
-	        claims.put("sub", userDetails.getUsername());
+	        claims.put("sub", userDetails);
 	        claims.put("role", userDetails.getAuthorities().toArray()[0]);
 	        claims.put("created", new Date(System.currentTimeMillis()));
 	        return Jwts.builder().setClaims(claims)

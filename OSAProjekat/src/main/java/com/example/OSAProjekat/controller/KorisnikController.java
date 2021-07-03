@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -117,10 +118,41 @@ public class KorisnikController {
         return new ResponseEntity<>(korisnikDTO, HttpStatus.CREATED);
     }
     
-    @GetMapping("/{username}")
+    /*@GetMapping("/{username}")
 	public ResponseEntity<Korisnik> get(@PathVariable String username){
 		try {
 			Korisnik korisnik = korisnikService.findByUsername(username);
+			return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
+			
+		} catch(NoSuchElementException e) {
+			return new ResponseEntity<Korisnik>(HttpStatus.NOT_FOUND);
+		}
+	}
+    */
+    
+    @PutMapping("/{id}")
+	public ResponseEntity<?> update(@RequestBody Korisnik korisnik, 
+			@PathVariable Integer id) {
+		try {
+			Korisnik existKorisnik = korisnikService.get(id);
+			if(existKorisnik != null) {
+				existKorisnik.setIme(korisnik.getIme());
+				existKorisnik.setPrezime(korisnik.getPrezime());
+				existKorisnik.setUsername(korisnik.getUsername());
+				existKorisnik.setPassword(passwordEncoder.encode(korisnik.getPassword()));
+				korisnikService.save(existKorisnik);
+			}
+		return new ResponseEntity<>(HttpStatus.OK);
+		}catch(NoSuchElementException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+    
+    
+    @GetMapping("/{id}")
+	public ResponseEntity<Korisnik> find(@PathVariable Integer id){
+		try {
+			Korisnik korisnik = korisnikService.get(id);
 			return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
 			
 		} catch(NoSuchElementException e) {

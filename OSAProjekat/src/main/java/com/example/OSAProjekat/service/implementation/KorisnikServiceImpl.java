@@ -30,6 +30,10 @@ public class KorisnikServiceImpl implements KorisnikService {
 	private PasswordEncoder passwordEncoder;
 	
 	
+	public void save(Korisnik korisnik) {
+		korisnikRepository.save(korisnik);
+	}
+	
 	@Override
 	public Korisnik findByUsername(String username) {
 		 Optional<Korisnik> korisnik = korisnikRepository.findFirstByUsername(username);
@@ -109,6 +113,8 @@ public class KorisnikServiceImpl implements KorisnikService {
 
 	}
 	
-	
+	public Korisnik get(Integer id) {
+		return korisnikRepository.findById(id).orElse(null);
+	}
 
 }
