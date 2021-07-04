@@ -39,6 +39,7 @@ import com.example.OSAProjekat.model.entity.Administrator;
 import com.example.OSAProjekat.model.entity.Korisnik;
 import com.example.OSAProjekat.model.entity.Kupac;
 import com.example.OSAProjekat.model.entity.KupacSignUpRequest;
+import com.example.OSAProjekat.model.entity.MessageResponse;
 import com.example.OSAProjekat.model.entity.Prodavac;
 import com.example.OSAProjekat.model.entity.ProdavacSignUpRequest;
 import com.example.OSAProjekat.model.entity.Roles;
@@ -149,10 +150,38 @@ public class KorisnikController {
 	}
     
     
+    @PutMapping("/blokiraj/{id}")
+	public ResponseEntity<?> blokiraj(@RequestBody Korisnik korisnik, 
+			@PathVariable Integer id) {
+		try {
+			Korisnik existKorisnik = korisnikService.get(id);
+			if(existKorisnik != null) {
+				existKorisnik.setBlokiran(true);
+		
+				korisnikService.save(existKorisnik);
+			}
+		return new ResponseEntity<>(HttpStatus.OK);
+		}catch(NoSuchElementException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+    
+    
     @GetMapping("/{id}")
 	public ResponseEntity<Korisnik> find(@PathVariable Integer id){
 		try {
 			Korisnik korisnik = korisnikService.get(id);
+			return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
+			
+		} catch(NoSuchElementException e) {
+			return new ResponseEntity<Korisnik>(HttpStatus.NOT_FOUND);
+		}
+	}
+    
+    @GetMapping("username/{username}")
+	public ResponseEntity<Korisnik> find(@PathVariable String username){
+		try {
+			Korisnik korisnik = korisnikService.findByUsername(username);
 			return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
 			
 		} catch(NoSuchElementException e) {
@@ -189,11 +218,12 @@ public class KorisnikController {
     @Consumes("MediaType.APPLICATION_JSON")
 	@Produces("MediaType.APPLICATION_JSON")
 	public ResponseEntity<?> registerProdavac(@Valid @RequestBody ProdavacSignUpRequest signUpRequest) {
-		/*if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+    	
+		if (korisnikRepository.existsByUsername(signUpRequest.getUsername())) {
 			return ResponseEntity
 					.badRequest()
 					.body(new MessageResponse("Error: Username is already taken!"));
-		}*/
+		}
 		
 
 
@@ -267,11 +297,11 @@ public class KorisnikController {
     @Consumes("MediaType.APPLICATION_JSON")
 	@Produces("MediaType.APPLICATION_JSON")
 	public ResponseEntity<?> registerKupac(@Valid @RequestBody KupacSignUpRequest signUpRequest) {
-		/*if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+		if (korisnikRepository.existsByUsername(signUpRequest.getUsername())) {
 			return ResponseEntity
 					.badRequest()
 					.body(new MessageResponse("Error: Username is already taken!"));
-		}*/
+		}
 		
 
 

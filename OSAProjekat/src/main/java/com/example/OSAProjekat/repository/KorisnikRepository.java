@@ -21,5 +21,13 @@ public interface KorisnikRepository extends JpaRepository<Korisnik, Integer> {
 		User findByUsername(String username);
 		
 		Boolean existsByUsername(String username);*/
+	  
+	  	/*@Query(value = "SELECT u FROM korisnici u WHERE u.username = :username")
+		Korisnik getUserByUsername(@Param("username") String username);*/
+
+		
+		Korisnik findByUsername(String username);
+		
+		Boolean existsByUsername(String username);
 
 }

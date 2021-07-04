@@ -21,4 +21,6 @@ public interface KorisnikService {
     Korisnik get(Integer id);
     
     void save(Korisnik korisnik);
+        
+    
 }
