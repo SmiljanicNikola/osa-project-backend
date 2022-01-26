@@ -95,10 +95,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/artikli/**").permitAll()          
                 .antMatchers(HttpMethod.GET, "/api/prodavci").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/korisnici/**").permitAll()          
-
+                .antMatchers(HttpMethod.GET, "/api/porudzbine/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/prodavci/**").permitAll()
 
                 .antMatchers(HttpMethod.GET, "/api/kupci").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/porudzbine").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/admini").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/korisnici").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/korisnici/**").permitAll()
