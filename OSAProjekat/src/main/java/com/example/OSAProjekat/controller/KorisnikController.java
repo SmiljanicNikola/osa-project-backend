@@ -327,6 +327,10 @@ public class KorisnikController {
   
     @PostMapping("/login")
     public ResponseEntity<JWTResponse> login(@RequestBody KorisnikDTO korisnikDTO) {
+    	String userNameLogovanog = korisnikDTO.getUsername();
+    	Korisnik korisnik = korisnikService.findByUsername(userNameLogovanog);
+    	if(korisnik != null) {
+    	if(!korisnik.isBlokiran()) {
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(korisnikDTO.getUsername(), korisnikDTO.getPassword());
         Authentication authentication = authenticationManager.authenticate(authenticationToken);
@@ -341,7 +345,13 @@ public class KorisnikController {
         } catch (UsernameNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
+    }else {
+    	return ResponseEntity.status(403).build();
     }
+    }else {
+    	return ResponseEntity.status(404).build();
+    }
+    	}
     
     @PostMapping("/login2")
     public ResponseEntity<String> login2(@RequestBody KorisnikDTO korisnikDTO) {

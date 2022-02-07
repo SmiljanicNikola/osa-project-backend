@@ -91,6 +91,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/api/korisnici/kupac").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/korisnici/prodavacc").permitAll()
                 
+                .antMatchers(HttpMethod.POST, "/porudzbinee").permitAll()
+                .antMatchers(HttpMethod.POST, "/porudzbinee/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/artiklii/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/artiklii/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/artiklii/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/porudzbinee/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/porudzbineee/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/porudzbinee/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/porudzbine6/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/porudzbine6/**").permitAll()
+
                 
                 .antMatchers(HttpMethod.GET, "/api/artikli/**").permitAll()          
                 .antMatchers(HttpMethod.GET, "/api/prodavci").permitAll()
