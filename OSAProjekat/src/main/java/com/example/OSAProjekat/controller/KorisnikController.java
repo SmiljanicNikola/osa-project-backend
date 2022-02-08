@@ -149,6 +149,39 @@ public class KorisnikController {
 		}
 	}
     
+    @PutMapping("/username/{userName}")
+	public ResponseEntity<?> update(@RequestBody Korisnik korisnik, 
+			@PathVariable String userName) {
+		try {
+			Korisnik existKorisnik = korisnikService.get(userName);
+			if(existKorisnik != null) {
+				existKorisnik.setIme(korisnik.getIme());
+				existKorisnik.setPrezime(korisnik.getPrezime());
+				existKorisnik.setUsername(korisnik.getUsername());
+				//existKorisnik.setPassword(passwordEncoder.encode(korisnik.getPassword()));
+				korisnikService.save(existKorisnik);
+			}
+		return new ResponseEntity<>(HttpStatus.OK);
+		}catch(NoSuchElementException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+    
+    @PutMapping("updatePassword/username/{userName}")
+	public ResponseEntity<?> updatePassword(@RequestBody Korisnik korisnik, 
+			@PathVariable String userName) {
+		try {
+			Korisnik existKorisnik = korisnikService.get(userName);
+			if(existKorisnik != null) {
+				existKorisnik.setPassword(passwordEncoder.encode(korisnik.getPassword()));
+				korisnikService.save(existKorisnik);
+			}
+		return new ResponseEntity<>(HttpStatus.OK);
+		}catch(NoSuchElementException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+    
     
     @PutMapping("/blokiraj/{id}")
 	public ResponseEntity<?> blokiraj(@RequestBody Korisnik korisnik, 
@@ -178,7 +211,7 @@ public class KorisnikController {
 		}
 	}
     
-    @GetMapping("username/{username}")
+    @GetMapping("/username/{username}")
 	public ResponseEntity<Korisnik> find(@PathVariable String username){
 		try {
 			Korisnik korisnik = korisnikService.findByUsername(username);
@@ -188,31 +221,6 @@ public class KorisnikController {
 			return new ResponseEntity<Korisnik>(HttpStatus.NOT_FOUND);
 		}
 	}
-    
-    /*@PostMapping("/prodavac")
-    @Consumes("MediaType.APPLICATION_JSON")
-	@Produces("MediaType.APPLICATION_JSON")
-    public ResponseEntity<ProdavacDTO> createProdavac(@RequestBody @Validated KorisnikDTO newKorisnik, ProdavacDTO newProdavac){
-
-        /*Korisnik createdKorisnik = korisnikService.createProdavac(newKorisnik);
-
-        if(createdKorisnik == null){
-            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
-        }
-        KorisnikDTO korisnikDTO = new KorisnikDTO(createdKorisnik);     
-        
-        Prodavac createdProdavac = prodavacService.createeProdavac(newProdavac, newKorisnik);
-
-        if(createdProdavac == null){
-            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
-        }
-        
-        ProdavacDTO prodavacDTO = new ProdavacDTO(createdProdavac);
-        //prodavacDTO.setId(newKorisnik.getId());
-
-        return new ResponseEntity<>(prodavacDTO, HttpStatus.CREATED);
-                      
-    }*/
     
     @PostMapping("/prodavac")
     @Consumes("MediaType.APPLICATION_JSON")

@@ -20,6 +20,8 @@ public interface KorisnikService {
 
     Korisnik get(Integer id);
     
+    Korisnik get(String userName);
+    
     void save(Korisnik korisnik);
         
     

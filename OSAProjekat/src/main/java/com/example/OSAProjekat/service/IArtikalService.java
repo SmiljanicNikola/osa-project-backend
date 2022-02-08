@@ -14,4 +14,10 @@ public interface IArtikalService {
 	List<ArtikalSearchResponseDTO> getArtikliByNaziv(String naziv);
 	
 	List<ArtikalSearch> getAll();
+	
+	List<ArtikalSearchResponseDTO> getArtikliByCenaGreaterThan(int cena);
+	
+	List<ArtikalSearchResponseDTO> getArtikliByCenaLessThan(int cena);
+	
+	List<ArtikalSearchResponseDTO> getArtikliByCenaGreatherThanAndLessThan(double minCena, int maxCena);
 }

@@ -13,7 +13,7 @@ public class ArtikalSearch {
 	@Id
 	private String id;
 	
-	@Field(type = FieldType.Keyword)
+	@Field(type = FieldType.Text)
 	private String naziv;
 	
 	@Field(type = FieldType.Text)
@@ -24,6 +24,9 @@ public class ArtikalSearch {
 	
 	@Field(type = FieldType.Keyword)
 	private String putanjaSlike;
+	
+	/*@Field(type=FieldType.Integer)
+	private int prodavacId;*/
 
 	public String getId() {
 		return id;

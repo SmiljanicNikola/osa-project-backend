@@ -8,4 +8,5 @@ import com.example.OSAProjekat.model.entity.Kupac;
 @Repository
 public interface KupacRepository extends JpaRepository<Kupac, Integer> {
 
+	Kupac findByKorisnikUsername(String korisnikUsername);
 }

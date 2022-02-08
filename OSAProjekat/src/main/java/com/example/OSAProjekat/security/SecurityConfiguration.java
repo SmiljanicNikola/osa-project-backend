@@ -101,6 +101,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/porudzbinee/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/porudzbine6/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/porudzbine6/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/artiklii2/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/artiklii2/**").permitAll()
 
                 
                 .antMatchers(HttpMethod.GET, "/api/artikli/**").permitAll()          
@@ -108,6 +110,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/korisnici/**").permitAll()          
                 .antMatchers(HttpMethod.GET, "/api/porudzbine/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/prodavci/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/kupci/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/kupci/**").permitAll()
+
+                .antMatchers(HttpMethod.PUT, "/api/korisnici/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/api/korisnici/username/**").permitAll()          
+
 
                 .antMatchers(HttpMethod.GET, "/api/kupci").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/porudzbine").permitAll()

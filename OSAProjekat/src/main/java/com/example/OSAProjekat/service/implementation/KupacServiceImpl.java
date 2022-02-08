@@ -72,4 +72,9 @@ public class KupacServiceImpl implements KupacService {
 	     
 	}
 
+	@Override
+	public Kupac getByKorisnikUsername(String korisnikUsername) {
+		return kupacRepo.findByKorisnikUsername(korisnikUsername);
+	}
+
 }

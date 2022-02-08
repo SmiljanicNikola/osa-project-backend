@@ -85,4 +85,14 @@ public class ProdavacServiceImpl implements ProdavacService {
 		return null;
 	}
 
+	@Override
+	public Prodavac getByKorisnikId(int korisnikId) {
+		return prodavacRepo.findByKorisnikId(korisnikId);
+	}
+
+	@Override
+	public Prodavac getByKorisnikUsername(String korisnikUsername) {
+		return prodavacRepo.findByKorisnikUsername(korisnikUsername);
+	}
+
 }

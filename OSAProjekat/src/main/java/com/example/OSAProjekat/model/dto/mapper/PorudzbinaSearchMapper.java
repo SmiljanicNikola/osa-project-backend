@@ -17,6 +17,7 @@ public class PorudzbinaSearchMapper {
 				porudzbinaSearchRequestDTO.getKomentar(),
 				porudzbinaSearchRequestDTO.isAnonimanKomentar(),
 				porudzbinaSearchRequestDTO.isArhiviranKomentar()
+			
 				);
 	}
 	
@@ -29,6 +30,7 @@ public class PorudzbinaSearchMapper {
 				porudzbinaSearch.getKomentar(),
 				porudzbinaSearch.isAnonimanKomentar(),
 				porudzbinaSearch.isArhiviranKomentar()
+		
 				);
 	}
 }

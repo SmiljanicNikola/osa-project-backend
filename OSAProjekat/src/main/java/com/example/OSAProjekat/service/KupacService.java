@@ -19,4 +19,6 @@ public interface KupacService {
 	public void delete(Integer id);
 	
 	Kupac createKupac(KupacDTO kupacDTO, KorisnikDTO korisnikDTO);
+	
+	Kupac getByKorisnikUsername(String korisnikUsername);
 }

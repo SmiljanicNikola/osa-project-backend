@@ -117,4 +117,9 @@ public class KorisnikServiceImpl implements KorisnikService {
 		return korisnikRepository.findById(id).orElse(null);
 	}
 
+	@Override
+	public Korisnik get(String userName) {
+		return korisnikRepository.findByUsername(userName);
+	}
+
 }

@@ -22,4 +22,9 @@ public interface ProdavacService {
 	
 	Prodavac createeProdavac(ProdavacDTO prodavacDTO, KorisnikDTO korisnikDTO);
 	
+	Prodavac getByKorisnikId(int korisnikId);
+	
+	Prodavac getByKorisnikUsername(String username);
+
+	
 }

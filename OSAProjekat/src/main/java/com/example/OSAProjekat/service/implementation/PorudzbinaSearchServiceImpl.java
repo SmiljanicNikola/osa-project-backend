@@ -49,4 +49,22 @@ public class PorudzbinaSearchServiceImpl implements IPorudzbinaService {
 		List<PorudzbinaSearch> svePorudzbine = _porudzbinaRepository.findAll();
 		return mapPorudzbineToPorudzbinaresponsibleDTO(svePorudzbine);
 	}
+
+	/*@Override
+	public List<PorudzbinaSearchResponseDTO> getPorudzbineByOcenaGreaterThan(int ocena) {
+		List<PorudzbinaSearch> porudzbine = _porudzbinaRepository.findAllByOcenaGreaterThan(ocena);
+		return mapPorudzbineToPorudzbinaresponsibleDTO(porudzbine);
+	}
+
+	@Override
+	public List<PorudzbinaSearchResponseDTO> getPorudzbineByOcenaLessThan(int ocena) {
+		List<PorudzbinaSearch> porudzbine = _porudzbinaRepository.findAllByOcenaLessThan(ocena);
+		return mapPorudzbineToPorudzbinaresponsibleDTO(porudzbine);
+	}*/
+
+	@Override
+	public List<PorudzbinaSearchResponseDTO> getPorudzbineByOcenaGreaterThanAndLessThan(int minOcena, int maxOcena) {
+		List<PorudzbinaSearch> porudzbine = _porudzbinaRepository.findByOcenaBetween(minOcena, maxOcena);
+		return mapPorudzbineToPorudzbinaresponsibleDTO(porudzbine);
+	}
 }

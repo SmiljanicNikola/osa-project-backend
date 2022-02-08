@@ -17,6 +17,8 @@ public class PorudzbinaSearchResponseDTO {
 	private boolean anonimanKomentar;
 	
 	private boolean arhiviranKomentar;
+	
+	private KupacDTO kupacDTO;
 
 	
 	public String getSatnica() {
@@ -103,7 +105,40 @@ public class PorudzbinaSearchResponseDTO {
 		super();
 	}
 
+	public KupacDTO getKupacDTO() {
+		return kupacDTO;
+	}
 
+	public void setKupacDTO(KupacDTO kupacDTO) {
+		this.kupacDTO = kupacDTO;
+	}
+
+	public PorudzbinaSearchResponseDTO(String satnica, boolean dostavljeno, int ocena, String komentar,
+			boolean anonimanKomentar, boolean arhiviranKomentar, KupacDTO kupacDTO) {
+		super();
+		this.satnica = satnica;
+		this.dostavljeno = dostavljeno;
+		this.ocena = ocena;
+		this.komentar = komentar;
+		this.anonimanKomentar = anonimanKomentar;
+		this.arhiviranKomentar = arhiviranKomentar;
+		this.kupacDTO = kupacDTO;
+	}
+
+	public PorudzbinaSearchResponseDTO(String id, String satnica, boolean dostavljeno, int ocena, String komentar,
+			boolean anonimanKomentar, boolean arhiviranKomentar, KupacDTO kupacDTO) {
+		super();
+		this.id = id;
+		this.satnica = satnica;
+		this.dostavljeno = dostavljeno;
+		this.ocena = ocena;
+		this.komentar = komentar;
+		this.anonimanKomentar = anonimanKomentar;
+		this.arhiviranKomentar = arhiviranKomentar;
+		this.kupacDTO = kupacDTO;
+	}
+
+	
 	
 	
 	

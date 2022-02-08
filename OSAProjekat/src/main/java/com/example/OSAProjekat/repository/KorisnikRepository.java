@@ -29,5 +29,6 @@ public interface KorisnikRepository extends JpaRepository<Korisnik, Integer> {
 		Korisnik findByUsername(String username);
 		
 		Boolean existsByUsername(String username);
+	
 
 }

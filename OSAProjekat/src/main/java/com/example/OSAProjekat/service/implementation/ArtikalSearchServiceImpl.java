@@ -51,4 +51,22 @@ public class ArtikalSearchServiceImpl implements IArtikalService{
 
 	}
 
+	@Override
+	public List<ArtikalSearchResponseDTO> getArtikliByCenaGreaterThan(int cena) {
+		List<ArtikalSearch> artikli = _artikalRepository.findAllByCenaGreaterThan(cena);
+		return mapArtikalToArtikalresponsibleDTO(artikli);
+	}
+
+	@Override
+	public List<ArtikalSearchResponseDTO> getArtikliByCenaLessThan(int cena) {
+		List<ArtikalSearch> artikli = _artikalRepository.findAllByCenaLessThan(cena);
+		return mapArtikalToArtikalresponsibleDTO(artikli);
+	}
+
+	@Override
+	public List<ArtikalSearchResponseDTO> getArtikliByCenaGreatherThanAndLessThan(double minCena, int maxCena) {
+		List<ArtikalSearch> artikli = _artikalRepository.findByCenaBetween(minCena, maxCena);
+		return mapArtikalToArtikalresponsibleDTO(artikli);
+	}
+
 }

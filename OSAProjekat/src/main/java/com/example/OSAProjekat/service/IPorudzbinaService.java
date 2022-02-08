@@ -13,5 +13,9 @@ public interface IPorudzbinaService {
 	List<PorudzbinaSearchResponseDTO> getPorudzbineByKomentar(String komentar);
 	
 	List<PorudzbinaSearchResponseDTO> getAll();
+	
+	List<PorudzbinaSearchResponseDTO> getPorudzbineByOcenaGreaterThanAndLessThan(int minOcena,int maxOcena);
+	
+
 
 }

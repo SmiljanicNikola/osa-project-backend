@@ -12,6 +12,8 @@ public class ArtikalSearchRequestDTO {
 	private double cena;
 	
 	private String putanjaSlike;
+	
+	/*private int prodavacId;*/
 
 	public ArtikalSearchRequestDTO(String id, String naziv, String opis, double cena, String putanjaSlike) {
 		super();
@@ -73,6 +75,34 @@ public class ArtikalSearchRequestDTO {
 	public void setPutanjaSlike(String putanjaSlike) {
 		this.putanjaSlike = putanjaSlike;
 	}
+
+	/*public int getProdavacId() {
+		return prodavacId;
+	}
+
+	public void setProdavacId(int prodavacId) {
+		this.prodavacId = prodavacId;
+	}
+
+	public ArtikalSearchRequestDTO(String id, String naziv, String opis, double cena, String putanjaSlike,
+			int prodavacId) {
+		super();
+		this.id = id;
+		this.naziv = naziv;
+		this.opis = opis;
+		this.cena = cena;
+		this.putanjaSlike = putanjaSlike;
+		this.prodavacId = prodavacId;
+	}
+
+	public ArtikalSearchRequestDTO(String naziv, String opis, double cena, String putanjaSlike, int prodavacId) {
+		super();
+		this.naziv = naziv;
+		this.opis = opis;
+		this.cena = cena;
+		this.putanjaSlike = putanjaSlike;
+		this.prodavacId = prodavacId;
+	}*/
 	
 	
 }

@@ -2,6 +2,8 @@ package com.example.OSAProjekat.model.dto;
 
 import java.time.LocalDate;
 
+import com.example.OSAProjekat.model.entity.Kupac;
+
 public class PorudzbinaSearchRequestDTO {
 	
 	private String id;
@@ -18,7 +20,7 @@ public class PorudzbinaSearchRequestDTO {
 	
 	private boolean arhiviranKomentar;
 
-	
+	private Kupac kupac;
 
 	public String getSatnica() {
 		return satnica;
@@ -107,6 +109,47 @@ public class PorudzbinaSearchRequestDTO {
 		this.anonimanKomentar = anonimanKomentar;
 		this.arhiviranKomentar = arhiviranKomentar;
 	}
+
+
+	public Kupac getKupac() {
+		return kupac;
+	}
+
+
+	public void setKupac(Kupac kupac) {
+		this.kupac = kupac;
+	}
+
+
+	public PorudzbinaSearchRequestDTO(String id, String satnica, boolean dostavljeno, int ocena, String komentar,
+			boolean anonimanKomentar, boolean arhiviranKomentar, Kupac kupac) {
+		super();
+		this.id = id;
+		this.satnica = satnica;
+		this.dostavljeno = dostavljeno;
+		this.ocena = ocena;
+		this.komentar = komentar;
+		this.anonimanKomentar = anonimanKomentar;
+		this.arhiviranKomentar = arhiviranKomentar;
+		this.kupac = kupac;
+	}
+
+
+	public PorudzbinaSearchRequestDTO(String satnica, boolean dostavljeno, int ocena, String komentar,
+			boolean anonimanKomentar, boolean arhiviranKomentar, Kupac kupac) {
+		super();
+		this.satnica = satnica;
+		this.dostavljeno = dostavljeno;
+		this.ocena = ocena;
+		this.komentar = komentar;
+		this.anonimanKomentar = anonimanKomentar;
+		this.arhiviranKomentar = arhiviranKomentar;
+		this.kupac = kupac;
+	}
+
+
+
+
 
 	
 	

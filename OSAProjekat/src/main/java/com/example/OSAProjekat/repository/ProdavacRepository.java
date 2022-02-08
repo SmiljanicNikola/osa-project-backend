@@ -8,4 +8,7 @@ import com.example.OSAProjekat.model.entity.Prodavac;
 @Repository
 public interface ProdavacRepository extends JpaRepository<Prodavac, Integer> {
 
+	Prodavac findByKorisnikId(int korisnikId);
+	
+	Prodavac findByKorisnikUsername(String korisnikUsername);
 }
