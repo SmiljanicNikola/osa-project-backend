@@ -8,7 +8,7 @@ public class PorudzbinaSearchRequestDTO {
 	
 	private String id;
 
-	private String satnica;
+	private LocalDate satnica;
 	
 	private boolean dostavljeno;
 	
@@ -22,12 +22,12 @@ public class PorudzbinaSearchRequestDTO {
 
 	private Kupac kupac;
 
-	public String getSatnica() {
+	public LocalDate getSatnica() {
 		return satnica;
 	}
 
 
-	public void setSatnica(String satnica) {
+	public void setSatnica(LocalDate satnica) {
 		this.satnica = satnica;
 	}
 
@@ -86,7 +86,7 @@ public class PorudzbinaSearchRequestDTO {
 	}
 
 
-	public PorudzbinaSearchRequestDTO(String id, String satnica, boolean dostavljeno, int ocena, String komentar,
+	public PorudzbinaSearchRequestDTO(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
 			boolean anonimanKomentar, boolean arhiviranKomentar) {
 		super();
 		this.id = id;
@@ -99,7 +99,7 @@ public class PorudzbinaSearchRequestDTO {
 	}
 
 
-	public PorudzbinaSearchRequestDTO(String satnica, boolean dostavljeno, int ocena, String komentar,
+	public PorudzbinaSearchRequestDTO(LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
 			boolean anonimanKomentar, boolean arhiviranKomentar) {
 		super();
 		this.satnica = satnica;
@@ -121,7 +121,7 @@ public class PorudzbinaSearchRequestDTO {
 	}
 
 
-	public PorudzbinaSearchRequestDTO(String id, String satnica, boolean dostavljeno, int ocena, String komentar,
+	public PorudzbinaSearchRequestDTO(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
 			boolean anonimanKomentar, boolean arhiviranKomentar, Kupac kupac) {
 		super();
 		this.id = id;
@@ -135,7 +135,7 @@ public class PorudzbinaSearchRequestDTO {
 	}
 
 
-	public PorudzbinaSearchRequestDTO(String satnica, boolean dostavljeno, int ocena, String komentar,
+	public PorudzbinaSearchRequestDTO(LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
 			boolean anonimanKomentar, boolean arhiviranKomentar, Kupac kupac) {
 		super();
 		this.satnica = satnica;

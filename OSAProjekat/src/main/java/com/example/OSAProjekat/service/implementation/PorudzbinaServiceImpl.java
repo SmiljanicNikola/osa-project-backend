@@ -37,4 +37,9 @@ public class PorudzbinaServiceImpl implements PorudzbinaService {
 		
 	}
 
+	@Override
+	public Porudzbina getByKorisnikusername(String username) {
+		return porudzbinaRepo.findByKupacKorisnikUsername(username);
+	}
+
 }

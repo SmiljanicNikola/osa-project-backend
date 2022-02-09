@@ -8,5 +8,7 @@ import com.example.OSAProjekat.model.entity.Porudzbina;
 
 @Repository
 public interface PorudzbinaRepository extends JpaRepository<Porudzbina, Integer> {
+	
+	Porudzbina findByKupacKorisnikUsername(String korisnikUsername);
 
 }

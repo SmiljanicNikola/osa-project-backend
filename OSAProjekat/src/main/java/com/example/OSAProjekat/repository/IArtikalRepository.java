@@ -1,6 +1,7 @@
 package com.example.OSAProjekat.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
@@ -20,6 +21,8 @@ public interface IArtikalRepository extends ElasticsearchRepository<ArtikalSearc
 	List<ArtikalSearch> findAllByCenaLessThan(int cena);
 	
 	List<ArtikalSearch> findByCenaBetween(double minCena, int maxCena);
+	
+	Optional<ArtikalSearch> findById(String id);
 
 	
 }

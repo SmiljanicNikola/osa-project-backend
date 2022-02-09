@@ -94,35 +94,42 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/porudzbinee").permitAll()
                 .antMatchers(HttpMethod.POST, "/porudzbinee/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/artiklii/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/artiklii/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/artikli7").permitAll()
+
                 .antMatchers(HttpMethod.GET, "/artiklii/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/porudzbinee/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/porudzbineee/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/porudzbinee/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/porudzbine6/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/porudzbine6/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/artiklii2/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/artiklii2/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/artikli7/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/artikli7/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/artikli7/**").permitAll()
+
+                .antMatchers(HttpMethod.GET, "/porudzbine7/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/porudzbine7/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/porudzbine7/**").permitAll()
 
                 
                 .antMatchers(HttpMethod.GET, "/api/artikli/**").permitAll()          
                 .antMatchers(HttpMethod.GET, "/api/prodavci").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/korisnici/**").permitAll()          
                 .antMatchers(HttpMethod.GET, "/api/porudzbine/**").permitAll()
+                
                 .antMatchers(HttpMethod.GET, "/api/prodavci/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/kupci/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/kupci/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/stavke/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/stavke/**").permitAll()
+
 
                 .antMatchers(HttpMethod.PUT, "/api/korisnici/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/api/korisnici/username/**").permitAll()          
-
-
                 .antMatchers(HttpMethod.GET, "/api/kupci").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/porudzbine").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/admini").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/korisnici").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/korisnici/**").permitAll()
-
                 .antMatchers(HttpMethod.GET, "/api/artikli").permitAll()             
 
                 

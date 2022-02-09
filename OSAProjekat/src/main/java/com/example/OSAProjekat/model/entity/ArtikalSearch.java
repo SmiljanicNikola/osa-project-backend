@@ -6,7 +6,7 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.elasticsearch.annotations.Setting;
 
-@Document(indexName="artiklii")
+@Document(indexName="artikli7")
 @Setting(settingPath= "/analyzers/serbianAnalyzer.json")
 public class ArtikalSearch {
 	
@@ -25,8 +25,8 @@ public class ArtikalSearch {
 	@Field(type = FieldType.Keyword)
 	private String putanjaSlike;
 	
-	/*@Field(type=FieldType.Integer)
-	private int prodavacId;*/
+	@Field(type=FieldType.Integer)
+	private int prodavacId;
 
 	public String getId() {
 		return id;
@@ -67,6 +67,15 @@ public class ArtikalSearch {
 	public void setPutanjaSlike(String putanjaSlike) {
 		this.putanjaSlike = putanjaSlike;
 	}
+	
+
+	public int getProdavacId() {
+		return prodavacId;
+	}
+
+	public void setProdavacId(int prodavacId) {
+		this.prodavacId = prodavacId;
+	}
 
 	public ArtikalSearch(String id, String naziv, String opis, double cena, String putanjaSlike) {
 		super();
@@ -87,6 +96,25 @@ public class ArtikalSearch {
 		this.opis = opis;
 		this.cena = cena;
 		this.putanjaSlike = putanjaSlike;
+	}
+
+	public ArtikalSearch(String id, String naziv, String opis, double cena, String putanjaSlike, int prodavacId) {
+		super();
+		this.id = id;
+		this.naziv = naziv;
+		this.opis = opis;
+		this.cena = cena;
+		this.putanjaSlike = putanjaSlike;
+		this.prodavacId = prodavacId;
+	}
+
+	public ArtikalSearch(String naziv, String opis, double cena, String putanjaSlike, int prodavacId) {
+		super();
+		this.naziv = naziv;
+		this.opis = opis;
+		this.cena = cena;
+		this.putanjaSlike = putanjaSlike;
+		this.prodavacId = prodavacId;
 	}
 	
 	

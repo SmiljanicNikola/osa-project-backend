@@ -14,4 +14,6 @@ public interface PorudzbinaService {
 	
 	public void delete(Integer id);
 	
+	Porudzbina getByKorisnikusername(String username);
+	
 }

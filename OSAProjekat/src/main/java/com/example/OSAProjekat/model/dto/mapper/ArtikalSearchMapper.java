@@ -12,7 +12,8 @@ public class ArtikalSearchMapper {
 				artikalSearchRequestDTO.getNaziv(),
 				artikalSearchRequestDTO.getOpis(),
 				artikalSearchRequestDTO.getCena(),
-				artikalSearchRequestDTO.getPutanjaSlike()
+				artikalSearchRequestDTO.getPutanjaSlike(),
+				artikalSearchRequestDTO.getProdavacId()
 				);
 	}
 	
@@ -22,7 +23,8 @@ public class ArtikalSearchMapper {
 				artikalSearch.getNaziv(),
 				artikalSearch.getOpis(),
 				artikalSearch.getCena(),
-				artikalSearch.getPutanjaSlike()
+				artikalSearch.getPutanjaSlike(),
+				artikalSearch.getProdavacId()
 				);
 	}
 }

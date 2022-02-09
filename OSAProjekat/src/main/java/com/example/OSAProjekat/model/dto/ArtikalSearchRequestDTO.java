@@ -13,7 +13,7 @@ public class ArtikalSearchRequestDTO {
 	
 	private String putanjaSlike;
 	
-	/*private int prodavacId;*/
+	private int prodavacId;
 
 	public ArtikalSearchRequestDTO(String id, String naziv, String opis, double cena, String putanjaSlike) {
 		super();
@@ -76,7 +76,7 @@ public class ArtikalSearchRequestDTO {
 		this.putanjaSlike = putanjaSlike;
 	}
 
-	/*public int getProdavacId() {
+	public int getProdavacId() {
 		return prodavacId;
 	}
 
@@ -102,7 +102,7 @@ public class ArtikalSearchRequestDTO {
 		this.cena = cena;
 		this.putanjaSlike = putanjaSlike;
 		this.prodavacId = prodavacId;
-	}*/
+	}
 	
 	
 }

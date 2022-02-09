@@ -63,6 +63,23 @@ public class Stavka {
 	public String toString() {
 		return "Stavka [id=" + id + ", kolicina=" + kolicina + ", artikal=" + artikal + "]";
 	}
+
+	public Stavka(Integer id, Integer kolicina, Artikal artikal) {
+		super();
+		this.id = id;
+		this.kolicina = kolicina;
+		this.artikal = artikal;
+	}
+
+	public Stavka(Integer kolicina, Artikal artikal) {
+		super();
+		this.kolicina = kolicina;
+		this.artikal = artikal;
+	}
+
+	public Stavka() {
+		super();
+	}
 	
 	
 }

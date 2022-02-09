@@ -9,6 +9,7 @@ public class PorudzbinaDTO implements Serializable {
 
 	private Integer id;
 	private LocalDate satnica;
+	private boolean dostavljeno;
 	private int ocena;
 	private String komentar;
 	private boolean anonimanKomentar;
@@ -21,10 +22,10 @@ public class PorudzbinaDTO implements Serializable {
 	}
 	
 	public PorudzbinaDTO(Porudzbina porudzbina) {
-		this(porudzbina.getId(), porudzbina.getSatnica(), porudzbina.getOcena(), porudzbina.getKomentar(), porudzbina.isAnonimanKomentar(), porudzbina.isArhiviranKomentar(), new KupacDTO(porudzbina.getKupac()), new StavkaDTO(porudzbina.getStavka()));
+		this(porudzbina.getId(), porudzbina.getSatnica(), porudzbina.isDostavljeno(), porudzbina.getOcena(), porudzbina.getKomentar(), porudzbina.isAnonimanKomentar(), porudzbina.isArhiviranKomentar(), new KupacDTO(porudzbina.getKupac()), new StavkaDTO(porudzbina.getStavka()));
 	}
 
-	public PorudzbinaDTO(Integer id, LocalDate satnica, int ocena, String komentar, boolean anonimanKomentar,
+	public PorudzbinaDTO(Integer id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar, boolean anonimanKomentar,
 			boolean arhiviranKomentar, KupacDTO kupac, StavkaDTO stavka) {
 		super();
 		this.id = id;
@@ -43,6 +44,14 @@ public class PorudzbinaDTO implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public boolean isDostavljeno() {
+		return dostavljeno;
+	}
+
+	public void setDostavljeno(boolean dostavljeno) {
+		this.dostavljeno = dostavljeno;
 	}
 
 	public LocalDate getSatnica() {

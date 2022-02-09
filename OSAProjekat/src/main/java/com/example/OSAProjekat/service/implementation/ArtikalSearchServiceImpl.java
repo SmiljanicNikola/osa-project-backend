@@ -2,6 +2,7 @@ package com.example.OSAProjekat.service.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -44,6 +45,7 @@ public class ArtikalSearchServiceImpl implements IArtikalService{
 		}
 		return artikliDTOS;
 	}
+	
 
 	@Override
 	public List<ArtikalSearch> getAll() {
@@ -67,6 +69,18 @@ public class ArtikalSearchServiceImpl implements IArtikalService{
 	public List<ArtikalSearchResponseDTO> getArtikliByCenaGreatherThanAndLessThan(double minCena, int maxCena) {
 		List<ArtikalSearch> artikli = _artikalRepository.findByCenaBetween(minCena, maxCena);
 		return mapArtikalToArtikalresponsibleDTO(artikli);
+	}
+
+	@Override
+	public Optional<ArtikalSearch> findById(String id) {
+		Optional<ArtikalSearch> artikalSearch = _artikalRepository.findById(id);
+		return artikalSearch;
+	}
+
+	@Override
+	public void delete(String id) {
+		_artikalRepository.deleteById(id);
+		
 	}
 
 }

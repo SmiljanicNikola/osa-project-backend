@@ -6,7 +6,7 @@ public class PorudzbinaSearchResponseDTO {
 	
 	private String id;
 
-	private String satnica;
+	private LocalDate satnica;
 	
 	private boolean dostavljeno;
 	
@@ -21,11 +21,11 @@ public class PorudzbinaSearchResponseDTO {
 	private KupacDTO kupacDTO;
 
 	
-	public String getSatnica() {
+	public LocalDate getSatnica() {
 		return satnica;
 	}
 
-	public void setSatnica(String satnica) {
+	public void setSatnica(LocalDate satnica) {
 		this.satnica = satnica;
 	}
 
@@ -78,7 +78,7 @@ public class PorudzbinaSearchResponseDTO {
 	}
 
 	
-	public PorudzbinaSearchResponseDTO(String satnica, boolean dostavljeno, int ocena, String komentar,
+	public PorudzbinaSearchResponseDTO(LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
 			boolean anonimanKomentar, boolean arhiviranKomentar) {
 		super();
 		this.satnica = satnica;
@@ -89,7 +89,7 @@ public class PorudzbinaSearchResponseDTO {
 		this.arhiviranKomentar = arhiviranKomentar;
 	}
 
-	public PorudzbinaSearchResponseDTO(String id, String satnica, boolean dostavljeno, int ocena, String komentar,
+	public PorudzbinaSearchResponseDTO(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
 			boolean anonimanKomentar, boolean arhiviranKomentar) {
 		super();
 		this.id = id;
@@ -113,7 +113,7 @@ public class PorudzbinaSearchResponseDTO {
 		this.kupacDTO = kupacDTO;
 	}
 
-	public PorudzbinaSearchResponseDTO(String satnica, boolean dostavljeno, int ocena, String komentar,
+	public PorudzbinaSearchResponseDTO(LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
 			boolean anonimanKomentar, boolean arhiviranKomentar, KupacDTO kupacDTO) {
 		super();
 		this.satnica = satnica;
@@ -125,7 +125,7 @@ public class PorudzbinaSearchResponseDTO {
 		this.kupacDTO = kupacDTO;
 	}
 
-	public PorudzbinaSearchResponseDTO(String id, String satnica, boolean dostavljeno, int ocena, String komentar,
+	public PorudzbinaSearchResponseDTO(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
 			boolean anonimanKomentar, boolean arhiviranKomentar, KupacDTO kupacDTO) {
 		super();
 		this.id = id;

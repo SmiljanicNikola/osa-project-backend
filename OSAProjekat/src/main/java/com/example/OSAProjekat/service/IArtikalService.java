@@ -1,6 +1,7 @@
 package com.example.OSAProjekat.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.OSAProjekat.model.dto.ArtikalSearchRequestDTO;
 import com.example.OSAProjekat.model.dto.ArtikalSearchResponseDTO;
@@ -20,4 +21,8 @@ public interface IArtikalService {
 	List<ArtikalSearchResponseDTO> getArtikliByCenaLessThan(int cena);
 	
 	List<ArtikalSearchResponseDTO> getArtikliByCenaGreatherThanAndLessThan(double minCena, int maxCena);
+	
+	Optional<ArtikalSearch> findById(String id);
+	
+	public void delete(String id);
 }

@@ -6,20 +6,21 @@ import java.time.LocalDate;
 import javax.persistence.ManyToOne;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.DateFormat;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.elasticsearch.annotations.Setting;
 
-@Document(indexName="porudzbine6")
+@Document(indexName="porudzbine7")
 @Setting(settingPath= "/analyzers/serbianAnalyzer.json")
 public class PorudzbinaSearch {
 
 	@Id
 	private String id;
 	
-	@Field(type = FieldType.Text)
-	private String satnica;
+	@Field(type = FieldType.Date, format=DateFormat.custom, pattern="yyyy-MM-dd")
+	private LocalDate satnica;
 	
 	@Field(type = FieldType.Boolean)
 	private boolean dostavljeno;
@@ -54,11 +55,11 @@ public class PorudzbinaSearch {
 
 	
 
-	public String getSatnica() {
+	public LocalDate getSatnica() {
 		return satnica;
 	}
 
-	public void setSatnica(String satnica) {
+	public void setSatnica(LocalDate satnica) {
 		this.satnica = satnica;
 	}
 
@@ -119,7 +120,7 @@ public class PorudzbinaSearch {
 	}
 
 	
-	public PorudzbinaSearch(String satnica, boolean dostavljeno, int ocena, String komentar, boolean anonimanKomentar,
+	public PorudzbinaSearch(LocalDate satnica, boolean dostavljeno, int ocena, String komentar, boolean anonimanKomentar,
 			boolean arhiviranKomentar) {
 		super();
 		this.satnica = satnica;
@@ -132,7 +133,7 @@ public class PorudzbinaSearch {
 
 	
 
-	public PorudzbinaSearch(String id, String satnica, boolean dostavljeno, int ocena, String komentar,
+	public PorudzbinaSearch(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
 			boolean anonimanKomentar, boolean arhiviranKomentar) {
 		super();
 		this.id = id;

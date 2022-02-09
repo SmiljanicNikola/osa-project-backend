@@ -1,8 +1,15 @@
 package com.example.OSAProjekat.controller;
 
 import java.util.List;
+import java.util.Optional;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Produces;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,12 +22,13 @@ import com.example.OSAProjekat.model.dto.ArtikalNazivRequestDTO;
 import com.example.OSAProjekat.model.dto.ArtikalSearchRequestDTO;
 import com.example.OSAProjekat.model.dto.ArtikalSearchResponseDTO;
 import com.example.OSAProjekat.model.dto.PorudzbinaSearchResponseDTO;
+import com.example.OSAProjekat.model.entity.Artikal;
 import com.example.OSAProjekat.model.entity.ArtikalSearch;
 import com.example.OSAProjekat.service.IArtikalService;
 
 @RestController
 @CrossOrigin(origins="http://localhost:3000")
-@RequestMapping("/artiklii")
+@RequestMapping("/artikli7")
 public class ArtikalSearchController {
 	
 	private final IArtikalService _artikalService;
@@ -38,6 +46,12 @@ public class ArtikalSearchController {
 	@GetMapping("/naziv")
 	public List<ArtikalSearchResponseDTO> getByNaziv(@RequestBody ArtikalNazivRequestDTO artikalNazivRequestDTO){
 		return _artikalService.getArtikliByNaziv(artikalNazivRequestDTO.getNaziv());
+	}
+	
+	@GetMapping("/id/{id}")
+	public Optional<ArtikalSearch> getById(@PathVariable String id){
+		Optional<ArtikalSearch> artikalSearch = _artikalService.findById(id);
+		return artikalSearch;
 	}
 	
 	@GetMapping("/{naziv}")
@@ -65,4 +79,22 @@ public class ArtikalSearchController {
 	public List<ArtikalSearchResponseDTO> getByGreaterThanAndLessThan(@RequestParam(name="minCena") int minCena, @RequestParam(name="maxCena") int maxCena){
 		return _artikalService.getArtikliByCenaGreatherThanAndLessThan(minCena, maxCena);
 	}
+	
+	/*@PutMapping(value="/update/{/id}")
+	@Consumes("MediaType.APPLICATION_JSON")
+	@Produces("MediaType.APPLICATION_JSON")
+	public ResponseEntity<ArtikalSearchResponseDTO> updateArtikalElastic(@ReustBody )*/
+	
+	@DeleteMapping(value = "delete/{id}")
+	@Consumes("MediaType.APPLICATION_JSON")
+	@Produces("MediaType.APPLICATION_JSON")
+	    public ResponseEntity<?> deleteArtikal(@PathVariable("id") String id) {
+	        Optional<ArtikalSearch> artikalSearch = _artikalService.findById(id);
+	        if (artikalSearch != null) {
+	        	_artikalService.delete(id);
+	            return new ResponseEntity<>(HttpStatus.OK);
+	        } else {
+	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	        }
+	    }
 }
