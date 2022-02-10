@@ -1,8 +1,12 @@
 package com.example.OSAProjekat.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,23 +22,45 @@ import com.example.OSAProjekat.model.dto.PorudzbinaSearchRequestDTO;
 import com.example.OSAProjekat.model.dto.PorudzbinaSearchResponseDTO;
 import com.example.OSAProjekat.model.entity.ArtikalSearch;
 import com.example.OSAProjekat.model.entity.Korisnik;
+import com.example.OSAProjekat.model.entity.PorudzbinaSearch;
 import com.example.OSAProjekat.service.IPorudzbinaService;
+import com.example.OSAProjekat.service.PorudzbinaService;
 
 @RestController
 @CrossOrigin(origins="http://localhost:3000")
-@RequestMapping("/porudzbine7")
+@RequestMapping("/porudzbine4")
 public class PorudzbinaSearchController {
 	
 	private final IPorudzbinaService _porudzbinaService;
-
+	
+	
+	
+	
 	public PorudzbinaSearchController(IPorudzbinaService _porudzbinaService) {
 		super();
 		this._porudzbinaService = _porudzbinaService;
+		
 	}
-	
 	@GetMapping
 	public List<PorudzbinaSearchResponseDTO> getAll(){
 		return _porudzbinaService.getAll();
+	}
+	@GetMapping("/kupac/{id}")
+	public List<PorudzbinaSearchResponseDTO> getAllByKupacId(@PathVariable int id){
+		List<PorudzbinaSearchResponseDTO> porudzbineSve = _porudzbinaService.getAll();
+		List<PorudzbinaSearchResponseDTO> porudzbineOdgovarajuce = new ArrayList<>();
+		for(PorudzbinaSearchResponseDTO p : porudzbineSve) {
+			if(p.getKupacId() == id ) {
+				porudzbineOdgovarajuce.add(p);
+			}
+		}
+		return porudzbineSve;
+	}
+	
+	@GetMapping("/id/{id}")
+	public Optional<PorudzbinaSearch> getById(@PathVariable String id){
+		Optional<PorudzbinaSearch> artikalSearch = _porudzbinaService.findById(id);
+		return artikalSearch;
 	}
 	
 	@PostMapping
@@ -68,18 +94,17 @@ public class PorudzbinaSearchController {
 	}
 	
 	/*@PutMapping("/{id}")
-	public ResponseEntity<?> update(@PathVariable String id) {
+	public ResponseEntity<?> update(@RequestBody PorudzbinaSearchRequestDTO porudzbinaSearchRequestDTO, @PathVariable String id) {
 		try {
-			PorudzbinaSearchResponseDTO porudzbinaSearchResponseDTO = _porudzbinaService.get(id);
+			PorudzbinaSearchResponseDTO porudzbinaSearchResponseDTO = _porudzbinaService.g
 			if(porudzbinaSearchResponseDTO != null) {
-				porudzbinaSearchResponseDTO.setIme(korisnik.getIme());
-				existKorisnik.setPrezime(korisnik.getPrezime());
-				existKorisnik.setUsername(korisnik.getUsername());
-				existKorisnik.setPassword(passwordEncoder.encode(korisnik.getPassword()));
-				_porudzbinaService.save(porudzbinaSearchResponseDTO);
+				porudzbinaSearchResponseDTO.setKomentar(porudzbinaSearchRequestDTO.getKomentar());
+				porudzbinaSearchRequestDTO.setOcena(porudzbinaSearchRequestDTO.getOcena());
+				porudzbinaServiceJPA.save(porudzbinaSearchRequestDTO);
 			}
 		return new ResponseEntity<>(HttpStatus.OK);
 		}catch(NoSuchElementException e) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}*/
+		}
+}*/
 }

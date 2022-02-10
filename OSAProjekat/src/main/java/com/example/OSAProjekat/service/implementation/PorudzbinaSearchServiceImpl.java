@@ -2,12 +2,14 @@ package com.example.OSAProjekat.service.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.example.OSAProjekat.model.dto.PorudzbinaSearchRequestDTO;
 import com.example.OSAProjekat.model.dto.PorudzbinaSearchResponseDTO;
 import com.example.OSAProjekat.model.dto.mapper.PorudzbinaSearchMapper;
+import com.example.OSAProjekat.model.entity.ArtikalSearch;
 import com.example.OSAProjekat.model.entity.PorudzbinaSearch;
 import com.example.OSAProjekat.repository.IPorudzbinaRepository;
 import com.example.OSAProjekat.service.IPorudzbinaService;
@@ -67,4 +69,23 @@ public class PorudzbinaSearchServiceImpl implements IPorudzbinaService {
 		List<PorudzbinaSearch> porudzbine = _porudzbinaRepository.findByOcenaBetween(minOcena, maxOcena);
 		return mapPorudzbineToPorudzbinaresponsibleDTO(porudzbine);
 	}
+
+	@Override
+	public List<PorudzbinaSearchResponseDTO> getAllByKupacId(int id) {
+		List<PorudzbinaSearch> porudzbine = _porudzbinaRepository.findAllByKupacId(id);
+		return mapPorudzbineToPorudzbinaresponsibleDTO(porudzbine);
+	}
+
+	@Override
+	public PorudzbinaSearch save(PorudzbinaSearchRequestDTO PorudzbinaSearchRequestDTO) {
+		return _porudzbinaRepository.save(PorudzbinaSearchRequestDTO);
+		
+	}
+
+	@Override
+	public Optional<PorudzbinaSearch> findById(String id) {
+		Optional<PorudzbinaSearch> artikalSearch = _porudzbinaRepository.findById(id);
+		return artikalSearch;
+	}
+	
 }

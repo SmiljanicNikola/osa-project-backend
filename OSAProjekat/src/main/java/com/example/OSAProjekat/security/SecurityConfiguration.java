@@ -46,8 +46,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-    
-    
 
     @Bean
     public AuthenticationTokenFilter authenticationTokenFilterBean()
@@ -97,11 +95,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/artikli7").permitAll()
 
                 .antMatchers(HttpMethod.GET, "/artiklii/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/porudzbinee/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/porudzbineee/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/porudzbinee/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/porudzbine6/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/porudzbine6/**").permitAll()
+        
                 .antMatchers(HttpMethod.POST, "/artikli7/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/artikli7/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/artikli7/**").permitAll()
@@ -109,6 +103,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/porudzbine7/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/porudzbine7/**").permitAll()
                 .antMatchers(HttpMethod.PUT, "/porudzbine7/**").permitAll()
+                
+                .antMatchers(HttpMethod.GET, "/porudzbine4/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/porudzbine4/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/porudzbine4/**").permitAll()
 
                 
                 .antMatchers(HttpMethod.GET, "/api/artikli/**").permitAll()          
@@ -131,9 +129,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/korisnici").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/korisnici/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/artikli").permitAll()             
-
-                
-
 
                 .anyRequest().authenticated();
 

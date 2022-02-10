@@ -19,8 +19,31 @@ public class PorudzbinaSearchRequestDTO {
 	private boolean anonimanKomentar;
 	
 	private boolean arhiviranKomentar;
+	
+	private int kupacId;
+	
+	private int stavkaId;	
+	
 
-	private Kupac kupac;
+	public int getKupacId() {
+		return kupacId;
+	}
+
+
+	public void setKupacId(int kupacId) {
+		this.kupacId = kupacId;
+	}
+
+
+	public int getStavkaId() {
+		return stavkaId;
+	}
+
+
+	public void setStavkaId(int stavkaId) {
+		this.stavkaId = stavkaId;
+	}
+
 
 	public LocalDate getSatnica() {
 		return satnica;
@@ -111,18 +134,8 @@ public class PorudzbinaSearchRequestDTO {
 	}
 
 
-	public Kupac getKupac() {
-		return kupac;
-	}
-
-
-	public void setKupac(Kupac kupac) {
-		this.kupac = kupac;
-	}
-
-
 	public PorudzbinaSearchRequestDTO(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
-			boolean anonimanKomentar, boolean arhiviranKomentar, Kupac kupac) {
+			boolean anonimanKomentar, boolean arhiviranKomentar, int kupacId, int stavkaId) {
 		super();
 		this.id = id;
 		this.satnica = satnica;
@@ -131,12 +144,13 @@ public class PorudzbinaSearchRequestDTO {
 		this.komentar = komentar;
 		this.anonimanKomentar = anonimanKomentar;
 		this.arhiviranKomentar = arhiviranKomentar;
-		this.kupac = kupac;
+		this.kupacId = kupacId;
+		this.stavkaId = stavkaId;
 	}
 
 
 	public PorudzbinaSearchRequestDTO(LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
-			boolean anonimanKomentar, boolean arhiviranKomentar, Kupac kupac) {
+			boolean anonimanKomentar, boolean arhiviranKomentar, int kupacId, int stavkaId) {
 		super();
 		this.satnica = satnica;
 		this.dostavljeno = dostavljeno;
@@ -144,13 +158,27 @@ public class PorudzbinaSearchRequestDTO {
 		this.komentar = komentar;
 		this.anonimanKomentar = anonimanKomentar;
 		this.arhiviranKomentar = arhiviranKomentar;
-		this.kupac = kupac;
+		this.kupacId = kupacId;
+		this.stavkaId = stavkaId;
+	}
+
+
+	public PorudzbinaSearchRequestDTO(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
+			boolean anonimanKomentar, boolean arhiviranKomentar, int kupacId) {
+		super();
+		this.id = id;
+		this.satnica = satnica;
+		this.dostavljeno = dostavljeno;
+		this.ocena = ocena;
+		this.komentar = komentar;
+		this.anonimanKomentar = anonimanKomentar;
+		this.arhiviranKomentar = arhiviranKomentar;
+		this.kupacId = kupacId;
 	}
 
 
 
-
-
+	
 	
 	
 }

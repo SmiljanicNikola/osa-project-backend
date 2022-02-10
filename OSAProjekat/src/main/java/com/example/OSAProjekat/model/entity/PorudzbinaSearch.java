@@ -12,7 +12,7 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.elasticsearch.annotations.Setting;
 
-@Document(indexName="porudzbine7")
+@Document(indexName="porudzbine4")
 @Setting(settingPath= "/analyzers/serbianAnalyzer.json")
 public class PorudzbinaSearch {
 
@@ -37,13 +37,15 @@ public class PorudzbinaSearch {
 	@Field(type = FieldType.Boolean)
 	private boolean arhiviranKomentar;
 	
-	@ManyToOne
+	/*@ManyToOne
 	@Field(type = FieldType.Object)
-	private Kupac kupac;
+	private Kupac kupac;*/
 	
-	@ManyToOne
-	@Field(type = FieldType.Object)
-	private Stavka stavka;
+	@Field(type=FieldType.Integer)
+	private int kupacId;
+	
+	@Field(type=FieldType.Integer)
+	private int stavkaId;
 
 	public String getId() {
 		return id;
@@ -103,7 +105,7 @@ public class PorudzbinaSearch {
 		this.arhiviranKomentar = arhiviranKomentar;
 	}
 
-	public Kupac getKupac() {
+	/*public Kupac getKupac() {
 		return kupac;
 	}
 
@@ -117,7 +119,7 @@ public class PorudzbinaSearch {
 
 	public void setStavka(Stavka stavka) {
 		this.stavka = stavka;
-	}
+	}*/
 
 	
 	public PorudzbinaSearch(LocalDate satnica, boolean dostavljeno, int ocena, String komentar, boolean anonimanKomentar,
@@ -133,6 +135,22 @@ public class PorudzbinaSearch {
 
 	
 
+	public int getKupacId() {
+		return kupacId;
+	}
+
+	public void setKupacId(int kupacId) {
+		this.kupacId = kupacId;
+	}
+
+	public int getStavkaId() {
+		return stavkaId;
+	}
+
+	public void setStavkaId(int stavkaId) {
+		this.stavkaId = stavkaId;
+	}
+
 	public PorudzbinaSearch(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
 			boolean anonimanKomentar, boolean arhiviranKomentar) {
 		super();
@@ -147,6 +165,58 @@ public class PorudzbinaSearch {
 
 	public PorudzbinaSearch() {
 		super();
+	}
+
+	public PorudzbinaSearch(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
+			boolean anonimanKomentar, boolean arhiviranKomentar, int kupacId, int stavkaId) {
+		super();
+		this.id = id;
+		this.satnica = satnica;
+		this.dostavljeno = dostavljeno;
+		this.ocena = ocena;
+		this.komentar = komentar;
+		this.anonimanKomentar = anonimanKomentar;
+		this.arhiviranKomentar = arhiviranKomentar;
+		this.kupacId = kupacId;
+		this.stavkaId = stavkaId;
+	}
+
+	public PorudzbinaSearch(LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
+			boolean anonimanKomentar, boolean arhiviranKomentar, int kupacId, int stavkaId) {
+		super();
+		this.satnica = satnica;
+		this.dostavljeno = dostavljeno;
+		this.ocena = ocena;
+		this.komentar = komentar;
+		this.anonimanKomentar = anonimanKomentar;
+		this.arhiviranKomentar = arhiviranKomentar;
+		this.kupacId = kupacId;
+		this.stavkaId = stavkaId;
+	}
+
+	public PorudzbinaSearch(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
+			boolean anonimanKomentar, boolean arhiviranKomentar, int kupacId) {
+		super();
+		this.id = id;
+		this.satnica = satnica;
+		this.dostavljeno = dostavljeno;
+		this.ocena = ocena;
+		this.komentar = komentar;
+		this.anonimanKomentar = anonimanKomentar;
+		this.arhiviranKomentar = arhiviranKomentar;
+		this.kupacId = kupacId;
+	}
+
+	public PorudzbinaSearch(LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
+			boolean anonimanKomentar, boolean arhiviranKomentar, int kupacId) {
+		super();
+		this.satnica = satnica;
+		this.dostavljeno = dostavljeno;
+		this.ocena = ocena;
+		this.komentar = komentar;
+		this.anonimanKomentar = anonimanKomentar;
+		this.arhiviranKomentar = arhiviranKomentar;
+		this.kupacId = kupacId;
 	}
 
 	

@@ -2,7 +2,9 @@
 "analysis":{
 	"analyzer":{
 		"default":{
-			"type":"serbian"			
+			"type":"serbian",
+	  		"tokenizer": "standard",
+	  		"filter": ["lowercase", "stop"]			
 			}
 		}
 	}

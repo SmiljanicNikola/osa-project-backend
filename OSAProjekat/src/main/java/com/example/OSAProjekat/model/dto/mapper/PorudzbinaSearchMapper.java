@@ -16,7 +16,10 @@ public class PorudzbinaSearchMapper {
 				porudzbinaSearchRequestDTO.getOcena(),
 				porudzbinaSearchRequestDTO.getKomentar(),
 				porudzbinaSearchRequestDTO.isAnonimanKomentar(),
-				porudzbinaSearchRequestDTO.isArhiviranKomentar()
+				porudzbinaSearchRequestDTO.isArhiviranKomentar(),
+				porudzbinaSearchRequestDTO.getKupacId(),
+				porudzbinaSearchRequestDTO.getStavkaId()
+
 			
 				);
 	}
@@ -29,8 +32,9 @@ public class PorudzbinaSearchMapper {
 				porudzbinaSearch.getOcena(),
 				porudzbinaSearch.getKomentar(),
 				porudzbinaSearch.isAnonimanKomentar(),
-				porudzbinaSearch.isArhiviranKomentar()
-		
+				porudzbinaSearch.isArhiviranKomentar(),
+				porudzbinaSearch.getKupacId(),
+				porudzbinaSearch.getStavkaId()
 				);
 	}
 }

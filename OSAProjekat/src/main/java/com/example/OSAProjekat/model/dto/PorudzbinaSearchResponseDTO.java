@@ -18,9 +18,27 @@ public class PorudzbinaSearchResponseDTO {
 	
 	private boolean arhiviranKomentar;
 	
-	private KupacDTO kupacDTO;
+	private int kupacId;
+	
+	private int stavkaId;
 
 	
+	public int getKupacId() {
+		return kupacId;
+	}
+
+	public void setKupacId(int kupacId) {
+		this.kupacId = kupacId;
+	}
+
+	public int getStavkaId() {
+		return stavkaId;
+	}
+
+	public void setStavkaId(int stavkaId) {
+		this.stavkaId = stavkaId;
+	}
+
 	public LocalDate getSatnica() {
 		return satnica;
 	}
@@ -89,32 +107,13 @@ public class PorudzbinaSearchResponseDTO {
 		this.arhiviranKomentar = arhiviranKomentar;
 	}
 
-	public PorudzbinaSearchResponseDTO(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
-			boolean anonimanKomentar, boolean arhiviranKomentar) {
-		super();
-		this.id = id;
-		this.satnica = satnica;
-		this.dostavljeno = dostavljeno;
-		this.ocena = ocena;
-		this.komentar = komentar;
-		this.anonimanKomentar = anonimanKomentar;
-		this.arhiviranKomentar = arhiviranKomentar;
-	}
-
+	
 	public PorudzbinaSearchResponseDTO() {
 		super();
 	}
 
-	public KupacDTO getKupacDTO() {
-		return kupacDTO;
-	}
-
-	public void setKupacDTO(KupacDTO kupacDTO) {
-		this.kupacDTO = kupacDTO;
-	}
-
 	public PorudzbinaSearchResponseDTO(LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
-			boolean anonimanKomentar, boolean arhiviranKomentar, KupacDTO kupacDTO) {
+			boolean anonimanKomentar, boolean arhiviranKomentar, int kupacId, int stavkaId) {
 		super();
 		this.satnica = satnica;
 		this.dostavljeno = dostavljeno;
@@ -122,11 +121,24 @@ public class PorudzbinaSearchResponseDTO {
 		this.komentar = komentar;
 		this.anonimanKomentar = anonimanKomentar;
 		this.arhiviranKomentar = arhiviranKomentar;
-		this.kupacDTO = kupacDTO;
+		this.kupacId = kupacId;
+		this.stavkaId = stavkaId;
+	}
+
+	public PorudzbinaSearchResponseDTO(LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
+			boolean anonimanKomentar, boolean arhiviranKomentar, int kupacId) {
+		super();
+		this.satnica = satnica;
+		this.dostavljeno = dostavljeno;
+		this.ocena = ocena;
+		this.komentar = komentar;
+		this.anonimanKomentar = anonimanKomentar;
+		this.arhiviranKomentar = arhiviranKomentar;
+		this.kupacId = kupacId;
 	}
 
 	public PorudzbinaSearchResponseDTO(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
-			boolean anonimanKomentar, boolean arhiviranKomentar, KupacDTO kupacDTO) {
+			boolean anonimanKomentar, boolean arhiviranKomentar, int kupacId) {
 		super();
 		this.id = id;
 		this.satnica = satnica;
@@ -135,9 +147,24 @@ public class PorudzbinaSearchResponseDTO {
 		this.komentar = komentar;
 		this.anonimanKomentar = anonimanKomentar;
 		this.arhiviranKomentar = arhiviranKomentar;
-		this.kupacDTO = kupacDTO;
+		this.kupacId = kupacId;
 	}
 
+	public PorudzbinaSearchResponseDTO(String id, LocalDate satnica, boolean dostavljeno, int ocena, String komentar,
+			boolean anonimanKomentar, boolean arhiviranKomentar, int kupacId, int stavkaId) {
+		super();
+		this.id = id;
+		this.satnica = satnica;
+		this.dostavljeno = dostavljeno;
+		this.ocena = ocena;
+		this.komentar = komentar;
+		this.anonimanKomentar = anonimanKomentar;
+		this.arhiviranKomentar = arhiviranKomentar;
+		this.kupacId = kupacId;
+		this.stavkaId = stavkaId;
+	}
+
+	
 	
 	
 	
