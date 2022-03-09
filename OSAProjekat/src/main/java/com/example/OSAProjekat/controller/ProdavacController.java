@@ -54,6 +54,7 @@ public class ProdavacController {
         return new ResponseEntity<>(new ProdavacDTO(prodavac), HttpStatus.OK);
     }
 	
+	
 	@PutMapping("/username/{userName}")
 	public ResponseEntity<?> update(@RequestBody Prodavac prodavac, @PathVariable String userName){
 		try {
@@ -69,6 +70,7 @@ public class ProdavacController {
 		}
 	}
 	
+	
 	@GetMapping(value = "/korisnik/{korisnikId}")
     public ResponseEntity<ProdavacDTO> getProdavacByKorisnikId(@PathVariable("korisnikId") Integer korisnikId) {
         Prodavac prodavac = prodavacService.getByKorisnikId(korisnikId);
@@ -78,6 +80,7 @@ public class ProdavacController {
 
         return new ResponseEntity<>(new ProdavacDTO(prodavac), HttpStatus.OK);
     }
+	
 	
 	@GetMapping(value = "/username/{korisnikUsername}")
     public ResponseEntity<ProdavacDTO> getProdavacByUsername(@PathVariable("korisnikUsername") String korisnikUsername) {

@@ -16,6 +16,7 @@ import com.example.OSAProjekat.repository.KorisnikRepository;
 import com.example.OSAProjekat.service.KorisnikService;
 import com.example.OSAProjekat.service.ProdavacService;
 
+
 @Service
 public class KorisnikServiceImpl implements KorisnikService {
 

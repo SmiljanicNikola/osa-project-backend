@@ -2,7 +2,6 @@ package com.example.OSAProjekat.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -32,8 +31,6 @@ import com.example.OSAProjekat.service.PorudzbinaService;
 public class PorudzbinaSearchController {
 	
 	private final IPorudzbinaService _porudzbinaService;
-	
-	
 	
 	
 	public PorudzbinaSearchController(IPorudzbinaService _porudzbinaService) {
@@ -93,18 +90,5 @@ public class PorudzbinaSearchController {
 		return _porudzbinaService.getPorudzbineByOcenaGreaterThanAndLessThan(minOcena, maxOcena);
 	}
 	
-	/*@PutMapping("/{id}")
-	public ResponseEntity<?> update(@RequestBody PorudzbinaSearchRequestDTO porudzbinaSearchRequestDTO, @PathVariable String id) {
-		try {
-			PorudzbinaSearchResponseDTO porudzbinaSearchResponseDTO = _porudzbinaService.g
-			if(porudzbinaSearchResponseDTO != null) {
-				porudzbinaSearchResponseDTO.setKomentar(porudzbinaSearchRequestDTO.getKomentar());
-				porudzbinaSearchRequestDTO.setOcena(porudzbinaSearchRequestDTO.getOcena());
-				porudzbinaServiceJPA.save(porudzbinaSearchRequestDTO);
-			}
-		return new ResponseEntity<>(HttpStatus.OK);
-		}catch(NoSuchElementException e) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-}*/
+	
 }

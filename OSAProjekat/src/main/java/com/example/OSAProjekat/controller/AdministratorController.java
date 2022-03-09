@@ -36,8 +36,6 @@ public class AdministratorController {
 		return new ResponseEntity<>(administratoriDTO, HttpStatus.OK);
 		
 	}
-	
-	
-	
+
 	
 }

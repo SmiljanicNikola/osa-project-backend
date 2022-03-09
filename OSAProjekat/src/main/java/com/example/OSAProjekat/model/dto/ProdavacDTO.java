@@ -15,11 +15,14 @@ public class ProdavacDTO {
 	
 	private KorisnikDTO korisnik;
 	
-	private LocalDate poslujeOd;	
+	private LocalDate poslujeOd;
+	
 	@NotBlank
 	private String email;
+	
 	@NotBlank
 	private String adresa;
+	
 	@NotBlank
 	private String naziv;
 
@@ -31,8 +34,6 @@ public class ProdavacDTO {
 	public ProdavacDTO(Prodavac prodavac) {
 		this(prodavac.getId(), new KorisnikDTO(prodavac.getKorisnik()), prodavac.getPoslujeOd(), prodavac.getEmail(), prodavac.getAdresa(), prodavac.getNaziv());
 	}
-	
-	
 
 
 	public ProdavacDTO(Integer id, @NotBlank KorisnikDTO korisnik, LocalDate poslujeOd, @NotBlank String email,
@@ -102,7 +103,6 @@ public class ProdavacDTO {
 	public void setKorisnik(KorisnikDTO korisnik) {
 		this.korisnik = korisnik;
 	}
-	
 	
 	
 }

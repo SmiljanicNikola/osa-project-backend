@@ -6,9 +6,10 @@ public class JWTResponse {
 
 private static final long serialVersionUID = -8091879091924046844L;
 	
-	
 	private String token;
+	
 	private String type = "Bearer";
+	
 	private String username;
 
 	public JWTResponse(String accessToken,String username) {
@@ -42,6 +43,5 @@ private static final long serialVersionUID = -8091879091924046844L;
 		this.username = username;
 	}
 
-	
 	
 }

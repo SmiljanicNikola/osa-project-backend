@@ -16,6 +16,7 @@ import com.example.OSAProjekat.model.entity.PorudzbinaSearch;
 import com.example.OSAProjekat.repository.IArtikalRepository;
 import com.example.OSAProjekat.service.IArtikalService;
 
+//Korisceno iskljucivo za ElasticSearch
 @Service
 public class ArtikalSearchServiceImpl implements IArtikalService{
 

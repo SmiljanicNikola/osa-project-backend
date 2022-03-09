@@ -9,7 +9,6 @@ import com.example.OSAProjekat.repository.ArtikalRepository;
 
 
 public interface ArtikalService {
-
 	
 	public List<Artikal> listAll();
 		
@@ -19,6 +18,4 @@ public interface ArtikalService {
 		
 	public void delete(Integer id);
 		
-	
-	
 }

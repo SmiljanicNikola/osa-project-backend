@@ -1,6 +1,6 @@
 package com.example.OSAProjekat.model.dto;
 
-
+//Model vezan iskljucivo za ElasticSearch
 public class ArtikalSearchRequestDTO {
 	
 	private String id;

@@ -8,14 +8,23 @@ import com.example.OSAProjekat.model.entity.Porudzbina;
 public class PorudzbinaDTO implements Serializable {
 
 	private Integer id;
+	
 	private LocalDate satnica;
+	
 	private boolean dostavljeno;
+	
 	private int ocena;
+	
 	private String komentar;
+	
 	private boolean anonimanKomentar;
+	
 	private boolean arhiviranKomentar;
+	
 	private KupacDTO kupac;
+	
 	private StavkaDTO stavka;
+	
 	
 	public PorudzbinaDTO() {
 		
@@ -110,6 +119,5 @@ public class PorudzbinaDTO implements Serializable {
 		this.stavka = stavka;
 	}
 	
-	
-	
+		
 }

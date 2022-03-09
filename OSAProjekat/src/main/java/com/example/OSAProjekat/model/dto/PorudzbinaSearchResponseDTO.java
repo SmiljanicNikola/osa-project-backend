@@ -2,6 +2,7 @@ package com.example.OSAProjekat.model.dto;
 
 import java.time.LocalDate;
 
+//Model vezan iskljucivo za ElasticSearch
 public class PorudzbinaSearchResponseDTO {
 	
 	private String id;
@@ -164,9 +165,5 @@ public class PorudzbinaSearchResponseDTO {
 		this.stavkaId = stavkaId;
 	}
 
-	
-	
-	
-	
 	
 }

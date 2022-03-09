@@ -14,6 +14,7 @@ import com.example.OSAProjekat.model.entity.PorudzbinaSearch;
 import com.example.OSAProjekat.repository.IPorudzbinaRepository;
 import com.example.OSAProjekat.service.IPorudzbinaService;
 
+//Korisceno iskljucivo za ElasticSearch
 @Service
 public class PorudzbinaSearchServiceImpl implements IPorudzbinaService {
 

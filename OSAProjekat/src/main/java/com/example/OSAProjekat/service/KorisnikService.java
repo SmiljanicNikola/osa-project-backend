@@ -24,5 +24,4 @@ public interface KorisnikService {
     
     void save(Korisnik korisnik);
         
-    
 }

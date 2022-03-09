@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import com.example.OSAProjekat.model.entity.Kupac;
 
+//Model vezan iskljucivo za ElasticSearch
 public class PorudzbinaSearchRequestDTO {
 	
 	private String id;
@@ -176,9 +177,5 @@ public class PorudzbinaSearchRequestDTO {
 		this.kupacId = kupacId;
 	}
 
-
-
-	
-	
 	
 }

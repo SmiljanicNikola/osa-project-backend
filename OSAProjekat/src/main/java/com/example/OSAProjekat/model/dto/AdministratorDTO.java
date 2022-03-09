@@ -42,9 +42,4 @@ public class AdministratorDTO {
 		this.korisnik = korisnik;
 	}
 	
-	
-	
-	
-	
-	
 }

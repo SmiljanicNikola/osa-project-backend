@@ -80,10 +80,6 @@ public class ArtikalSearchController {
 		return _artikalService.getArtikliByCenaGreatherThanAndLessThan(minCena, maxCena);
 	}
 	
-	/*@PutMapping(value="/update/{/id}")
-	@Consumes("MediaType.APPLICATION_JSON")
-	@Produces("MediaType.APPLICATION_JSON")
-	public ResponseEntity<ArtikalSearchResponseDTO> updateArtikalElastic(@ReustBody )*/
 	
 	@DeleteMapping(value = "delete/{id}")
 	@Consumes("MediaType.APPLICATION_JSON")

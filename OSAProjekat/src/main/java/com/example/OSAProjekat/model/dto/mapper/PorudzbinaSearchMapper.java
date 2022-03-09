@@ -1,7 +1,6 @@
 package com.example.OSAProjekat.model.dto.mapper;
 
 import java.time.LocalDate;
-
 import com.example.OSAProjekat.model.dto.PorudzbinaSearchRequestDTO;
 import com.example.OSAProjekat.model.dto.PorudzbinaSearchResponseDTO;
 import com.example.OSAProjekat.model.entity.PorudzbinaSearch;
@@ -37,4 +36,5 @@ public class PorudzbinaSearchMapper {
 				porudzbinaSearch.getStavkaId()
 				);
 	}
+	
 }

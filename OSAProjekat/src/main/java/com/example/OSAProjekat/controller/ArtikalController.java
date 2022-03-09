@@ -94,7 +94,8 @@ public class ArtikalController {
 
 	        artikal = artikalService.save(artikal);
 	        return new ResponseEntity<>(new ArtikalDTO(artikal), HttpStatus.CREATED);
-	    }
+	        	
+	 }
 
 	//@PreAuthorize("hasRole('PRODAVAC')")
 	@PutMapping(value = "/{id}")

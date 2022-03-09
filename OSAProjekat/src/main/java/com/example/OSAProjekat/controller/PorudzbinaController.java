@@ -39,13 +39,9 @@ public class PorudzbinaController {
 	public ResponseEntity<List<Porudzbina>> getPorudzbine(){
 		List<Porudzbina> porudzbine = porudzbinaService.listAll();
 		
-		/*List<PorudzbinaDTO> porudzbineDTO = new ArrayList<>();
-		for(Porudzbina p : porudzbine) {
-			porudzbineDTO.add()
-		}*/
-		
 		return new ResponseEntity<>(porudzbine, HttpStatus.OK);
 	}
+	
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<PorudzbinaDTO> getPorudzbina(@PathVariable("id") Integer id){
@@ -56,24 +52,7 @@ public class PorudzbinaController {
 		return new ResponseEntity<>(new PorudzbinaDTO(porudzbina), HttpStatus.OK);
 	}
 	
-	/*@GetMapping(value = "/username/{korisnikUsername}")
-	public ResponseEntity<List<PorudzbinaDTO>> getPorudzbinaByUsernameKorisnika(@PathVariable("korisnikUsername") String korisnikUsername){
-		List<Porudzbina> porudzbine = porudzbinaService.listAll();
-		List<PorudzbinaDTO> porudzbineDTO = new ArrayList<>();
-		for(Porudzbina p : porudzbine) {
-			
-			if(p.getKupac().getKorisnik().getUsername().equals(korisnikUsername)) {
-				porudzbineDTO.add(new PorudzbinaDTO(p));
-			}
-		}
-		return new ResponseEntity<>(porudzbineDTO, HttpStatus.OK);
-		/*Porudzbina porudzbina = porudzbinaService.getByKorisnikusername(korisnikUsername);
-		if(porudzbina == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-        return new ResponseEntity<>(new PorudzbinaDTO(porudzbina), HttpStatus.OK);Ovde je bio kraj komentara
-
-	}*/
+	
 	@GetMapping(value = "/username/{korisnikUsername}")
 	public ResponseEntity<List<Porudzbina>> getPorudzbinaByUsernameKorisnikaNeDTO(@PathVariable("korisnikUsername") String korisnikUsername){
 		List<Porudzbina> porudzbine = porudzbinaService.listAll();
@@ -85,13 +64,10 @@ public class PorudzbinaController {
 			}
 		}
 		return new ResponseEntity<>(odgovarajucePorudzbine, HttpStatus.OK);
-		/*Porudzbina porudzbina = porudzbinaService.getByKorisnikusername(korisnikUsername);
-		if(porudzbina == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-        return new ResponseEntity<>(new PorudzbinaDTO(porudzbina), HttpStatus.OK);*/
 
 	}
+	
+	
 	@PutMapping(value = "/potvrdiPristiglost/{id}")
 	public ResponseEntity<?> potvrdiPristiglost(
 			@PathVariable Integer id) {
@@ -107,6 +83,7 @@ public class PorudzbinaController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
 	
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<?> ostaviRecenziju(@RequestBody Porudzbina porudzbina, 
@@ -125,5 +102,4 @@ public class PorudzbinaController {
 		}
 	}
 	
-
 }

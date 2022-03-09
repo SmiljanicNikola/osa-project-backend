@@ -10,15 +10,22 @@ import com.example.OSAProjekat.model.entity.Artikal;
 public class ArtikalDTO implements Serializable {
 
 	private Integer id;
+	
 	private String naziv;
+	
 	private String opis;
+	
 	private double cena;	
+	
 	private String putanjaSlike;
+	
 	private ProdavacDTO prodavac;
+	
 	
 	public ArtikalDTO() {
 		
 	}
+	
 	
 	public ArtikalDTO(Artikal artikal) {
 		this(artikal.getId(), artikal.getNaziv(), artikal.getOpis(), artikal.getCena(), artikal.getPutanjaSlike(),  new ProdavacDTO(artikal.getProdavac()));
@@ -82,9 +89,6 @@ public class ArtikalDTO implements Serializable {
 	public void setProdavac(ProdavacDTO prodavac) {
 		this.prodavac = prodavac;
 	}
-	
-	
-	
-	
+		
 	
 }

@@ -52,6 +52,4 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
 	    }
 	    
 	    
-	    
-	    
 }

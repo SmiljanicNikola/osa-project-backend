@@ -1,5 +1,6 @@
 package com.example.OSAProjekat.model.dto;
 
+//Model vezan iskljucivo za ElasticSearch
 public class PorudzbinaKomentarRequestDTO {
 
 	private String komentar;

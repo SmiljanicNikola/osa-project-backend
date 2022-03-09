@@ -54,7 +54,6 @@ public class AdministratorServiceImpl implements AdministratorService {
 		
 		//Sam korisnik
 	 	Korisnik newKorisnik = new Korisnik();
-	 	//newKorisnik.setId(korisnikDTO.getId());
         newKorisnik.setIme(korisnikDTO.getIme());
         newKorisnik.setPrezime(korisnikDTO.getPrezime());
         newKorisnik.setUsername(korisnikDTO.getUsername());
@@ -63,20 +62,12 @@ public class AdministratorServiceImpl implements AdministratorService {
         newKorisnik.setRole(Roles.ADMINISTRATOR);
         newKorisnik = korisnikRepo.save(newKorisnik);
 	
-        //Sam prodavac
 	 	Administrator newAdministrator = new Administrator();
-	 	//newProdavac.setId(newKorisnik.getId());
 	 	newAdministrator.setKorisnik(newKorisnik);
 	 	
 	 	newAdministrator = adminRepo.save(newAdministrator);
 
         return newAdministrator;
-}
-
-	/*@Override
-	public Administrator createeAdministrator(AdministratorDTO administratorDTO, KorisnikDTO korisnikDTO) {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
+	}
 
 }

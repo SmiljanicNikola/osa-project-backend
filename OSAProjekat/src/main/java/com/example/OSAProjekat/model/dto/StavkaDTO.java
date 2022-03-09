@@ -7,7 +7,9 @@ import com.example.OSAProjekat.model.entity.Stavka;
 public class StavkaDTO implements Serializable {
 	
 	private Integer id;
+	
 	private Integer kolicina;
+	
 	private ArtikalDTO artikal;
 	
 	public StavkaDTO() {
@@ -50,7 +52,5 @@ public class StavkaDTO implements Serializable {
 		this.artikal = artikal;
 	}
 
-	
-	
 
 }

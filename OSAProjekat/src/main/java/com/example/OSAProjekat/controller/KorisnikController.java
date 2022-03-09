@@ -1,10 +1,8 @@
 package com.example.OSAProjekat.controller;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Set;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
@@ -33,8 +31,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.OSAProjekat.model.dto.AdministratorDTO;
 import com.example.OSAProjekat.model.dto.KorisnikDTO;
-import com.example.OSAProjekat.model.dto.KupacDTO;
-import com.example.OSAProjekat.model.dto.ProdavacDTO;
 import com.example.OSAProjekat.model.entity.Administrator;
 import com.example.OSAProjekat.model.entity.Korisnik;
 import com.example.OSAProjekat.model.entity.Kupac;
@@ -119,17 +115,7 @@ public class KorisnikController {
         return new ResponseEntity<>(korisnikDTO, HttpStatus.CREATED);
     }
     
-    /*@GetMapping("/{username}")
-	public ResponseEntity<Korisnik> get(@PathVariable String username){
-		try {
-			Korisnik korisnik = korisnikService.findByUsername(username);
-			return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
-			
-		} catch(NoSuchElementException e) {
-			return new ResponseEntity<Korisnik>(HttpStatus.NOT_FOUND);
-		}
-	}
-    */
+  
     
     @PutMapping("/{id}")
 	public ResponseEntity<?> update(@RequestBody Korisnik korisnik, 
@@ -149,6 +135,7 @@ public class KorisnikController {
 		}
 	}
     
+    
     @PutMapping("/username/{userName}")
 	public ResponseEntity<?> update(@RequestBody Korisnik korisnik, 
 			@PathVariable String userName) {
@@ -166,6 +153,7 @@ public class KorisnikController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+    
     
     @PutMapping("updatePassword/username/{userName}")
 	public ResponseEntity<?> updatePassword(@RequestBody Korisnik korisnik, 
@@ -211,6 +199,7 @@ public class KorisnikController {
 		}
 	}
     
+    
     @GetMapping("/username/{username}")
 	public ResponseEntity<Korisnik> find(@PathVariable String username){
 		try {
@@ -221,6 +210,7 @@ public class KorisnikController {
 			return new ResponseEntity<Korisnik>(HttpStatus.NOT_FOUND);
 		}
 	}
+    
     
     @PostMapping("/prodavac")
     @Consumes("MediaType.APPLICATION_JSON")
@@ -233,7 +223,6 @@ public class KorisnikController {
 					.body(new MessageResponse("Error: Username is already taken!"));
 		}
 		
-
 
 		Korisnik korisnik = new Korisnik(signUpRequest.getIme(), signUpRequest.getPrezime(), signUpRequest.getUsername(), passwordEncoder.encode(signUpRequest.getPassword()));
 
@@ -254,17 +243,11 @@ public class KorisnikController {
 	}
     
     
+    //Administrator se kreira iskljucivo u POSTMAN-u
     @PostMapping("/administrator")
     @Consumes("MediaType.APPLICATION_JSON")
 	@Produces("MediaType.APPLICATION_JSON")
     public ResponseEntity<AdministratorDTO> createAdministrator(@RequestBody @Validated KorisnikDTO newKorisnik, AdministratorDTO newAdministrator){
-
-        /*Korisnik createdKorisnik = korisnikService.createProdavac(newKorisnik);
-
-        if(createdKorisnik == null){
-            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
-        }
-        KorisnikDTO korisnikDTO = new KorisnikDTO(createdKorisnik);*/
          
         Administrator createdAdministrator = adminService.createAdministrator(newAdministrator, newKorisnik);
 
@@ -279,27 +262,7 @@ public class KorisnikController {
     }
     
     
-    /*@PostMapping("/kupac")
-    @Consumes("MediaType.APPLICATION_JSON")
-	@Produces("MediaType.APPLICATION_JSON")
-    public ResponseEntity<KupacDTO> createKupac(@RequestBody @Validated KorisnikDTO newKorisnik, KupacDTO newKupac){
-
-        /*Korisnik createdKorisnik = korisnikService.createProdavac(newKorisnik);
-
-        if(createdKorisnik == null){
-            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
-        }
-        KorisnikDTO korisnikDTO = new KorisnikDTO(createdKorisnik);
-         
-        Kupac createdKupac = kupacService.createKupac(newKupac, newKorisnik);
-
-        if(createdKupac == null){
-            return new ResponseEntity<>(null, HttpStatus.NOT_ACCEPTABLE);
-        }
-        
-        KupacDTO kupacDTO = new KupacDTO(createdKupac);
-        return new ResponseEntity<>(kupacDTO, HttpStatus.CREATED);       
-    }*/
+    //Registracija kupca
     
     @PostMapping("/kupac")
     @Consumes("MediaType.APPLICATION_JSON")
@@ -311,7 +274,6 @@ public class KorisnikController {
 					.body(new MessageResponse("Error: Username is already taken!"));
 		}
 		
-
 
 		Korisnik korisnik = new Korisnik(signUpRequest.getIme(), signUpRequest.getPrezime(), signUpRequest.getUsername(), passwordEncoder.encode(signUpRequest.getPassword()));
 
@@ -359,7 +321,7 @@ public class KorisnikController {
     }else {
     	return ResponseEntity.status(404).build();
     }
-    	}
+}
     
     @PostMapping("/login2")
     public ResponseEntity<String> login2(@RequestBody KorisnikDTO korisnikDTO) {

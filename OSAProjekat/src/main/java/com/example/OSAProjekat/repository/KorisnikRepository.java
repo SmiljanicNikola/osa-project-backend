@@ -24,7 +24,6 @@ public interface KorisnikRepository extends JpaRepository<Korisnik, Integer> {
 	  
 	  	/*@Query(value = "SELECT u FROM korisnici u WHERE u.username = :username")
 		Korisnik getUserByUsername(@Param("username") String username);*/
-
 		
 		Korisnik findByUsername(String username);
 		

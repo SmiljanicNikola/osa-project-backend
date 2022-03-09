@@ -11,7 +11,6 @@ import com.example.OSAProjekat.model.entity.Prodavac;
 
 public interface AdministratorService {
 
-
 	public List<Administrator> listAll();
 	
 	public Administrator save(Administrator administrator);

@@ -66,7 +66,6 @@ public class TokenUtils {
 	    }
 	
 	 
-	 
 	 public String generateToken(UserDetails userDetails) {
 	        Map<String, Object> claims = new HashMap<String, Object>();
 	        claims.put("sub", userDetails);

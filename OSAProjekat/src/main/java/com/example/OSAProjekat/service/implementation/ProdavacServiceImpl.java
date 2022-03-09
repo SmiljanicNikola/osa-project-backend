@@ -57,7 +57,6 @@ public class ProdavacServiceImpl implements ProdavacService {
 		
 			//Sam korisnik
 		 	Korisnik newKorisnik = new Korisnik();
-		 	//newKorisnik.setId(korisnikDTO.getId());
 	        newKorisnik.setIme(korisnikDTO.getIme());
 	        newKorisnik.setPrezime(korisnikDTO.getPrezime());
 	        newKorisnik.setUsername(korisnikDTO.getUsername());

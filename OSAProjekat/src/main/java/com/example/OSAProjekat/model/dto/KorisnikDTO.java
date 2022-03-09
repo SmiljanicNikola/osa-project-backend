@@ -27,7 +27,9 @@ public class KorisnikDTO {
 	
 	@NotBlank
 	private String password;
+	
 	private boolean blokiran;
+	
 	
 	public KorisnikDTO() {
 		
