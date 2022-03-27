@@ -72,7 +72,7 @@ public class KorisnikServiceImpl implements KorisnikService {
 	        if(korisnik.isPresent()){
 	            return null;
 	        }
-
+	        
 	        Korisnik newKorisnik = new Korisnik();
 	        newKorisnik.setIme(korisnikDTO.getIme());
 	        newKorisnik.setPrezime(korisnikDTO.getPrezime());
@@ -82,7 +82,6 @@ public class KorisnikServiceImpl implements KorisnikService {
 	        newKorisnik.setRole(Roles.PRODAVAC);
 	        newKorisnik = korisnikRepository.save(newKorisnik);
 	        
-
 	        return newKorisnik;
 	}
 	
@@ -105,7 +104,6 @@ public class KorisnikServiceImpl implements KorisnikService {
 
 	        return newKorisnik;
 	}
-	
 	
 
 	@Override

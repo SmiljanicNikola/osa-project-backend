@@ -40,7 +40,6 @@ public class ArtikalController {
 	private ProdavacService prodavacService;
 	
 	//@PreAuthorize("hasAnyRole('PRODAVAC','ADMINISTRATOR','KUPAC')")
-	//@PreAuthorize("hasRole('KUPAC')")
 	@GetMapping
 	public ResponseEntity<List<ArtikalDTO>> getArtikle(){
 		List<Artikal> artikli = artikalService.listAll();
@@ -51,7 +50,6 @@ public class ArtikalController {
 		}
 		
 		return new ResponseEntity<>(artikliDTO, HttpStatus.OK);
-		
 	}
 	
 	
@@ -65,23 +63,7 @@ public class ArtikalController {
         return new ResponseEntity<>(new ArtikalDTO(artikal), HttpStatus.OK);
     }
 	
-	 //@PreAuthorize("hasRole('PRODAVAC')")
-	 /*@PostMapping()
-	 @Produces("MediaType.APPLICATION_JSON")
-	    public ResponseEntity<ArtikalDTO> saveArtikal(@RequestBody ArtikalDTO artikalDTO) {
-	        Artikal artikal = new Artikal();
-	        artikal.setNaziv(artikalDTO.getNaziv());
-	        artikal.setOpis(artikalDTO.getOpis());
-	        artikal.setCena(artikalDTO.getCena());
-	        artikal.setPutanjaSlike(artikalDTO.getPutanjaSlike());
-	        artikal.setProdavac(this.prodavacService.findOne(artikalDTO.getId()));
-	        //artikal.setProdavac(prodavacService.get(artikalDTO.getId()));
-
-	        artikal = artikalService.save(artikal);
-	        return new ResponseEntity<>(new ArtikalDTO(artikal), HttpStatus.CREATED);
-	    }*/
 	
-	 //@PreAuthorize("hasRole('PRODAVAC')")
 	 @PostMapping()
 	 @Produces("MediaType.APPLICATION_JSON")
 	    public ResponseEntity<ArtikalDTO> saveArtikal(@RequestBody AddArtikalRequest addArtikalRequest) {
@@ -96,13 +78,14 @@ public class ArtikalController {
 	        return new ResponseEntity<>(new ArtikalDTO(artikal), HttpStatus.CREATED);
 	        	
 	 }
+	 
 
 	//@PreAuthorize("hasRole('PRODAVAC')")
 	@PutMapping(value = "/{id}")
 	@Consumes("MediaType.APPLICATION_JSON")
 	@Produces("MediaType.APPLICATION_JSON")
 	    public ResponseEntity<ArtikalDTO> updateArtikal(@RequestBody ArtikalDTO artikalDTO, @PathVariable("id") Integer id) {
-	        // A product must exist
+		
 	        Artikal artikal = artikalService.get(id);
 
 	        if (artikal == null) {
@@ -119,6 +102,7 @@ public class ArtikalController {
 	        return new ResponseEntity<>(new ArtikalDTO(artikal), HttpStatus.OK);
 	    }
 
+	
 	 //@PreAuthorize("hasRole('PRODAVAC')")
 	 @DeleteMapping(value = "/{id}")
 	 @Consumes("MediaType.APPLICATION_JSON")
@@ -132,7 +116,4 @@ public class ArtikalController {
 	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	        }
 	    }
-	
-	
-
 }

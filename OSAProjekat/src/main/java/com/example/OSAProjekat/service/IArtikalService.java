@@ -25,4 +25,5 @@ public interface IArtikalService {
 	Optional<ArtikalSearch> findById(String id);
 	
 	public void delete(String id);
+	
 }

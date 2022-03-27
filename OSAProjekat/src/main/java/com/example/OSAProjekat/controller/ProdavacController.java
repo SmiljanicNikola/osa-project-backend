@@ -38,9 +38,7 @@ public class ProdavacController {
 		for(Prodavac p : prodavci) {
 			prodavciDTO.add(new ProdavacDTO(p));
 		}
-		
 		return new ResponseEntity<>(prodavciDTO, HttpStatus.OK);
-		
 	}
 	
 	
@@ -77,7 +75,7 @@ public class ProdavacController {
         if (prodavac == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
+        
         return new ResponseEntity<>(new ProdavacDTO(prodavac), HttpStatus.OK);
     }
 	
@@ -91,5 +89,4 @@ public class ProdavacController {
 
         return new ResponseEntity<>(new ProdavacDTO(prodavac), HttpStatus.OK);
     }
-	
 }

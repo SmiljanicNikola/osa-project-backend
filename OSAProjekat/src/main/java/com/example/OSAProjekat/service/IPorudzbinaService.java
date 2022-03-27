@@ -25,5 +25,4 @@ public interface IPorudzbinaService {
 	
 	Optional<PorudzbinaSearch> findById(String id);
 
-
 }

@@ -26,5 +26,4 @@ public interface ProdavacService {
 	
 	Prodavac getByKorisnikUsername(String username);
 
-	
 }

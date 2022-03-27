@@ -64,7 +64,6 @@ public class PorudzbinaController {
 			}
 		}
 		return new ResponseEntity<>(odgovarajucePorudzbine, HttpStatus.OK);
-
 	}
 	
 	
@@ -101,5 +100,4 @@ public class PorudzbinaController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
 }

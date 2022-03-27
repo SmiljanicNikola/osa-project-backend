@@ -20,7 +20,6 @@ import com.example.OSAProjekat.service.AdministratorService;
 @RequestMapping(value = "api/admini")
 public class AdministratorController {
 
-	
 	@Autowired
 	private AdministratorService adminiService;
 	
@@ -37,5 +36,4 @@ public class AdministratorController {
 		
 	}
 
-	
 }

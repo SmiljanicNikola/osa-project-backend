@@ -49,6 +49,7 @@ public class KupacController {
 		}
 		return new ResponseEntity<>(new KupacDTO(kupac),HttpStatus.OK);
 	}
+	
 	@PutMapping("/username/{userName}")
 	public ResponseEntity<?> update(@RequestBody Kupac kupac, @PathVariable String userName){
 		try {
@@ -62,5 +63,4 @@ public class KupacController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
 }

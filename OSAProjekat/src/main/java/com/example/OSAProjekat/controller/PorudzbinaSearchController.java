@@ -38,10 +38,12 @@ public class PorudzbinaSearchController {
 		this._porudzbinaService = _porudzbinaService;
 		
 	}
+	
 	@GetMapping
 	public List<PorudzbinaSearchResponseDTO> getAll(){
 		return _porudzbinaService.getAll();
 	}
+	
 	@GetMapping("/kupac/{id}")
 	public List<PorudzbinaSearchResponseDTO> getAllByKupacId(@PathVariable int id){
 		List<PorudzbinaSearchResponseDTO> porudzbineSve = _porudzbinaService.getAll();
@@ -89,6 +91,4 @@ public class PorudzbinaSearchController {
 	public List<PorudzbinaSearchResponseDTO> getByOcenaGreaterThanAndLessThan(@RequestParam(name="minOcena") int minOcena, @RequestParam(name="maxOcena") int maxOcena){
 		return _porudzbinaService.getPorudzbineByOcenaGreaterThanAndLessThan(minOcena, maxOcena);
 	}
-	
-	
 }

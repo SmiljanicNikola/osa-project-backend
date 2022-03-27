@@ -76,5 +76,4 @@ public class KupacServiceImpl implements KupacService {
 	public Kupac getByKorisnikUsername(String korisnikUsername) {
 		return kupacRepo.findByKorisnikUsername(korisnikUsername);
 	}
-
 }

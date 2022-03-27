@@ -21,4 +21,5 @@ public interface KupacService {
 	Kupac createKupac(KupacDTO kupacDTO, KorisnikDTO korisnikDTO);
 	
 	Kupac getByKorisnikUsername(String korisnikUsername);
+	
 }

@@ -222,7 +222,6 @@ public class KorisnikController {
 					.badRequest()
 					.body(new MessageResponse("Error: Username is already taken!"));
 		}
-		
 
 		Korisnik korisnik = new Korisnik(signUpRequest.getIme(), signUpRequest.getPrezime(), signUpRequest.getUsername(), passwordEncoder.encode(signUpRequest.getPassword()));
 
@@ -316,7 +315,7 @@ public class KorisnikController {
             return ResponseEntity.notFound().build();
         }
     }else {
-    	return ResponseEntity.status(403).build();
+    	return ResponseEntity.status(403).build();//Gledaj konzolu
     }
     }else {
     	return ResponseEntity.status(404).build();
@@ -336,6 +335,4 @@ public class KorisnikController {
             return ResponseEntity.notFound().build();
         }
     }
-    
-
 }
