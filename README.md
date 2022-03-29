@@ -1,8 +1,8 @@
 <b>NAPOMENA: Na ovom repozitorijumu se nalazi samo Backend, frontend koji je radjen u React-u se nalazi u zasebnom repozitorijumu i mozete ga pronaci ovde:</b> https://github.com/SmiljanicNikola/OSAFrontend
-
+<hr>
 <b>Opis i specifikacija projekta:</b>
 <br>U pitanju je <b>Java Spring Boot (Backend) i React (Frontend)</b> aplikacija, za cuvanje neophodnih podataka koriscen je <b>MySQL</b> (Sav potreban kod za kreiranje i punjenje svake tabele bice okacen u data.sql fajlu).
-
+<hr>
 <b>Korisnik aplikacije ima na raspolaganju sledeću funkcionalnost:</b>
 
 <b>[A1] Registracija korisnika.</b> Prilikom registracije na sistem osim korisničkih podataka,
