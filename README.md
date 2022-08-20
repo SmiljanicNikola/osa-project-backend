@@ -1,4 +1,4 @@
-<b>NOTE: This repository contains only BACKEND part, frontend developed in React is stored in another repository and you can find it here:</b> https://github.com/SmiljanicNikola/OSAFrontend
+<b>NOTE: This repository contains only BACKEND part, frontend developed in React is stored in another repository and you can find it here:</b> https://github.com/SmiljanicNikola/osa-project-frontend
 <hr>
 <b>Description and project specification:</b>
 <br>This is <b>Java Spring Boot (Backend) and React (Frontend)</b> application, for storing data I used <b>MySQL</b> (All the necessary SQL queries for creating and loading each table will be published in the data.sql file).
